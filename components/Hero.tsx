@@ -5,16 +5,20 @@ export default function Hero() {
   return (
     <section id="home" className="relative bg-iron-900 min-h-screen flex items-center pt-16 overflow-hidden">
 
-      {/* Subtle grid texture */}
-      <div aria-hidden="true" className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
-          backgroundSize: '48px 48px',
-        }} />
+      {/* Background video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        aria-hidden="true"
+      >
+        <source src="/HeroVideo.mp4" type="video/mp4" />
+      </video>
 
-      {/* Orange glow */}
-      <div aria-hidden="true" className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-brand-500 opacity-10 blur-3xl" />
-      <div aria-hidden="true" className="absolute -bottom-40 -left-20 w-[400px] h-[400px] rounded-full bg-brand-500 opacity-8 blur-3xl" />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-iron-900/70" aria-hidden="true" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-24">
         <div className="max-w-3xl">

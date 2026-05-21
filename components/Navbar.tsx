@@ -38,9 +38,9 @@ export default function Navbar() {
         <a href="#home" onClick={(e) => { e.preventDefault(); handleLink('#home'); }}
           className="flex items-center gap-3 group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Canyon Apts" className="h-10 w-auto" style={{ mixBlendMode: 'multiply' }} />
+          <img src="/logo.png" alt="Canyon Apartments" className="h-10 w-auto" style={{ mixBlendMode: 'multiply' }} />
           <span className="font-display font-bold text-lg tracking-wide uppercase text-iron-800 group-hover:text-brand-500 transition-colors duration-200">
-            Canyon Apts
+            Canyon Apartments
           </span>
         </a>
 

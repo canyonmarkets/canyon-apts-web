@@ -22,7 +22,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <span className="font-display font-bold text-2xl tracking-widest uppercase text-stone-100">
-              Canyon Apts
+              Canyon Apartments
             </span>
             <p className="text-xs leading-relaxed text-stone-400 max-w-xs">
               Fully furnished weekly and monthly rentals across the Phoenix metro.
@@ -80,7 +80,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-stone-600">&copy; {year} Canyon Apts. All rights reserved.</p>
+          <p className="text-xs text-stone-600">&copy; {year} Canyon Apartments. All rights reserved.</p>
           <p className="text-xs text-stone-700 font-mono tracking-wide">Phoenix Metro Furnished Rentals</p>
         </div>
       </div>

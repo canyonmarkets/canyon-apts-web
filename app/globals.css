@@ -45,6 +45,7 @@ html {
 body {
   background: #ffffff;
   color: #111827;
+  overflow-x: hidden;
 }
 
 /* ── Button pulse-ring ────────────────────────────────────────────── */

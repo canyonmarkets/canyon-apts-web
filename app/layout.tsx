@@ -16,10 +16,10 @@ const jsonLd = {
     {
       '@type': 'ApartmentComplex',
       '@id': 'https://canyon-apts.com/#business',
-      name: 'Canyon Apts',
-      alternateName: 'Canyon Apartments Phoenix',
+      name: 'Canyon Apartments',
+      alternateName: 'Canyon Apts Phoenix',
       description:
-        'Canyon Apts offers fully furnished short-term and extended-stay apartment rentals across the Phoenix metro area. No credit check, no rental history required. Weekly and monthly rates starting at $495/week. Utilities, parking, and furnishings all included.',
+        'Canyon Apartments offers fully furnished short-term and extended-stay apartment rentals across the Phoenix metro area. No credit check, no rental history required. Weekly and monthly rates starting at $495/week. Utilities, parking, and furnishings all included.',
       url: 'https://canyon-apts.com',
       telephone: '+16029356830',
       email: 'info@canyon-markets.com',
@@ -197,7 +197,7 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': 'https://canyon-apts.com/#website',
       url: 'https://canyon-apts.com',
-      name: 'Canyon Apts',
+      name: 'Canyon Apartments',
       description:
         'Furnished short-term apartment rentals across the Phoenix metro. No credit check required. Starting at $495/week.',
       publisher: { '@id': 'https://canyon-apts.com/#business' },
@@ -210,8 +210,8 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'No Credit Check Furnished Apartments Phoenix | Canyon Apts | From $495/Week',
-    template: '%s | Canyon Apts',
+    default: 'No Credit Check Furnished Apartments Phoenix | Canyon Apartments | From $495/Week',
+    template: '%s | Canyon Apartments',
   },
   description:
     'Fully furnished weekly & monthly apartments in Phoenix, Tempe, Mesa, Gilbert, and Chandler — no credit check, no rental history required. Utilities included. Move in today. Starting at $495/week.',
@@ -246,15 +246,15 @@ export const metadata: Metadata = {
     'no lease apartments Phoenix AZ',
     'all inclusive furnished apartment Phoenix',
   ],
-  authors: [{ name: 'Canyon Apts', url: 'https://canyon-apts.com' }],
+  authors: [{ name: 'Canyon Apartments', url: 'https://canyon-apts.com' }],
   metadataBase: new URL('https://canyon-apts.com'),
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://canyon-apts.com',
-    siteName: 'Canyon Apts',
-    title: 'No Credit Check Furnished Apartments Phoenix | Canyon Apts',
+    siteName: 'Canyon Apartments',
+    title: 'No Credit Check Furnished Apartments Phoenix | Canyon Apartments',
     description:
       'Fully furnished apartments available week-to-week or month-to-month across the Phoenix metro. No credit check. Utilities included. Move in today — starting at $495/week.',
     images: [
@@ -262,13 +262,13 @@ export const metadata: Metadata = {
         url: '/apt-01.webp',
         width: 1200,
         height: 630,
-        alt: 'Canyon Apts — Fully Furnished Apartment Phoenix AZ',
+        alt: 'Canyon Apartments — Fully Furnished Apartment Phoenix AZ',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'No Credit Check Furnished Apartments Phoenix | Canyon Apts',
+    title: 'No Credit Check Furnished Apartments Phoenix | Canyon Apartments',
     description:
       'Weekly & monthly furnished apartments in Phoenix metro. No credit check. Utilities included. Starting at $495/week.',
     images: ['/apt-01.webp'],

@@ -15,8 +15,8 @@ const STEPS = [
   },
   {
     step: '03',
-    title: 'Move In — Often This Week',
-    body: 'Once you\'re ready, we handle the paperwork quickly and get your keys in your hand. Most residents are settled in within a few days of their first call.',
+    title: 'Move In — Often Same Day',
+    body: 'Once you\'re ready, we handle the paperwork quickly and get your keys in your hand. Many residents are able to move in the same day they call.',
   },
 ] as const;
 
@@ -33,7 +33,7 @@ export default function HowItWorks() {
             How It Works
           </h2>
           <p className="mt-5 text-white text-base leading-relaxed max-w-lg mx-auto">
-            From first look to move-in day — usually done in under a week.
+            From first look to move-in day — can be done same day.
           </p>
           <div className="mt-8 h-px bg-gradient-to-r from-transparent via-brand-500/50 to-transparent" />
         </div>

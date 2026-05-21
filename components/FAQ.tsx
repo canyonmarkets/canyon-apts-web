@@ -63,8 +63,8 @@ export default function FAQ() {
               className="rounded-xl border border-white/10 bg-white/5 overflow-hidden transition-all duration-200">
               <button
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/5 transition-colors duration-200">
-                <span className="font-display font-bold text-lg uppercase tracking-wide text-white leading-snug">
+                className="group w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/5 transition-colors duration-200">
+                <span className="font-display font-bold text-lg uppercase tracking-wide text-white group-hover:text-brand-500 transition-colors duration-200 leading-snug">
                   {q}
                 </span>
                 <ChevronDown

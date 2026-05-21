@@ -24,23 +24,23 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-24">
         <div className="max-w-3xl">
 
-          <p className="text-brand-500 font-mono text-base tracking-[0.3em] uppercase mb-6">
+          <p className="text-brand-500 font-mono text-xs sm:text-base tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-6">
             Phoenix Metro Area · Starting at $495 / Week
           </p>
 
-          <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl uppercase tracking-wide text-white leading-none mb-8">
-            Furnished Apartments<br />
+          <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl uppercase tracking-wide text-white leading-none mb-8">
+            Furnished<br className="sm:hidden" /> Apartments<br />
             <span className="text-brand-500">No Credit Check</span><br />
             Required
           </h1>
 
-          <p className="text-white text-lg sm:text-xl leading-relaxed max-w-2xl mb-4">
+          <p className="text-white text-base sm:text-xl leading-relaxed max-w-2xl mb-4">
             Fully furnished weekly and monthly rentals across the Phoenix metro.
             Utilities included. Move-in ready. No credit checks, no rental history,
             no long-term commitment.
           </p>
 
-          <p className="text-iron-300 text-base leading-relaxed max-w-xl mb-10">
+          <p className="text-iron-300 text-sm sm:text-base leading-relaxed max-w-xl mb-10">
             Phoenix · Tempe · Mesa · Gilbert · Chandler
           </p>
 

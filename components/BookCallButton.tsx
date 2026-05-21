@@ -17,11 +17,6 @@ const ITEMS = [
     text: 'The starting rate of $495 is charged every week. A 4-week stay would be approximately $1,980, not $495.',
   },
   {
-    id: 'utilities',
-    heading: 'Utilities are included in my weekly rate.',
-    text: 'Water, electricity, and gas are all bundled into my weekly payment. There are no separate utility bills.',
-  },
-  {
     id: 'credit',
     heading: 'No credit check is required.',
     text: 'Past evictions, low credit scores, non-traditional income, and most background issues do not disqualify me.',
@@ -65,7 +60,7 @@ export default function BookCallButton({
 
   return (
     <>
-      {/* Trigger button — inherits all classes from parent */}
+      {/* Trigger button */}
       <button onClick={() => setOpen(true)} className={className}>
         {label}
       </button>
@@ -79,38 +74,38 @@ export default function BookCallButton({
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" aria-hidden="true" />
 
-          {/* Modal card */}
+          {/* Modal card — flex column with max height so it never overflows */}
           <div
-            className="relative z-10 w-full max-w-lg rounded-2xl bg-white shadow-2xl overflow-hidden"
+            className="relative z-10 w-full max-w-lg rounded-2xl bg-white shadow-2xl flex flex-col max-h-[90dvh]"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header */}
-            <div className="bg-iron-800 px-6 py-5 flex items-start justify-between gap-4">
+            {/* ── Sticky header ── */}
+            <div className="flex-shrink-0 bg-iron-800 rounded-t-2xl px-6 py-4 flex items-start justify-between gap-4">
               <div>
-                <p className="text-brand-500 font-mono text-xs tracking-[0.2em] uppercase mb-1">
+                <p className="text-brand-500 font-mono text-xs tracking-[0.2em] uppercase mb-0.5">
                   Before You Book
                 </p>
-                <h3 className="font-display font-bold text-2xl uppercase tracking-wide text-white leading-tight">
+                <h3 className="font-display font-bold text-xl uppercase tracking-wide text-white leading-tight">
                   Please Confirm You Understand
                 </h3>
               </div>
               <button
                 onClick={handleClose}
                 aria-label="Close"
-                className="flex-shrink-0 text-iron-400 hover:text-white transition-colors duration-200 mt-1"
+                className="flex-shrink-0 text-iron-400 hover:text-white transition-colors duration-200 mt-0.5"
               >
                 <X size={20} strokeWidth={2} />
               </button>
             </div>
 
-            {/* Checklist */}
-            <div className="px-6 py-6">
-              <p className="text-stone-600 text-sm leading-relaxed mb-6">
+            {/* ── Scrollable checklist ── */}
+            <div className="overflow-y-auto flex-1 px-6 py-4">
+              <p className="text-stone-600 text-sm leading-relaxed mb-4">
                 Check each box to confirm you have read and understood the following.
-                All five must be checked before you can book your call.
+                All {ITEMS.length} must be checked before you can book your call.
               </p>
 
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-3">
                 {ITEMS.map(({ id, heading, text }) => (
                   <button
                     key={id}
@@ -128,7 +123,7 @@ export default function BookCallButton({
                       <span className={`block text-sm font-semibold leading-snug mb-0.5 transition-colors duration-200 ${checked[id] ? 'text-brand-700' : 'text-stone-800'}`}>
                         {heading}
                       </span>
-                      <span className={`block text-xs leading-relaxed transition-colors duration-200 ${checked[id] ? 'text-stone-500' : 'text-stone-500'}`}>
+                      <span className="block text-xs leading-relaxed text-stone-500">
                         {text}
                       </span>
                     </span>
@@ -137,9 +132,8 @@ export default function BookCallButton({
               </div>
             </div>
 
-            {/* Footer */}
-            <div className="px-6 pb-6">
-              <div className="h-px bg-stone-100 mb-5" />
+            {/* ── Sticky footer with button ── */}
+            <div className="flex-shrink-0 px-6 py-4 border-t border-stone-100 bg-white rounded-b-2xl">
               <div className="flex items-center justify-between gap-4">
                 <p className="text-xs text-stone-400">
                   {checkedCount} of {ITEMS.length} confirmed
@@ -148,7 +142,7 @@ export default function BookCallButton({
                 <button
                   onClick={handleProceed}
                   disabled={!allChecked}
-                  className={`inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-white uppercase tracking-wide transition-all duration-200 ${
+                  className={`inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white uppercase tracking-wide transition-all duration-200 ${
                     allChecked
                       ? 'bg-brand-600 hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/30 active:scale-[0.97]'
                       : 'bg-stone-200 text-stone-400 cursor-not-allowed'

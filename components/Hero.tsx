@@ -28,13 +28,13 @@ export default function Hero() {
             Phoenix Metro Area · Starting at $495 / Week
           </p>
 
-          <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl uppercase tracking-wide text-white leading-none mb-8">
-            Furnished<br className="sm:hidden" /> Apartments<br />
+          <h1 className="font-display font-bold text-[1.6rem] sm:text-6xl lg:text-7xl uppercase tracking-normal sm:tracking-wide text-white leading-tight sm:leading-none mb-6 sm:mb-8">
+            Furnished Apartments<br />
             <span className="text-brand-500">No Credit Check</span><br />
             Required
           </h1>
 
-          <p className="text-white text-base sm:text-xl leading-relaxed max-w-2xl mb-4">
+          <p className="text-white text-sm sm:text-xl leading-relaxed max-w-2xl mb-4">
             Fully furnished weekly and monthly rentals across the Phoenix metro.
             Utilities included. Move-in ready. No credit checks, no rental history,
             no long-term commitment.

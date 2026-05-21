@@ -1,4 +1,5 @@
-const CALENDLY = 'https://calendly.com/canyonaz/apartment-call?month=2026-05';
+import BookCallButton from '@/components/BookCallButton';
+
 const INVENTORY = 'https://docs.google.com/document/d/1WzosuTy5dRP1OoL5GROj5aP8jsY132h6Vmd9cVLiccw/edit?pli=1&tab=t.0';
 
 export default function Hero() {
@@ -44,10 +45,10 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href={CALENDLY} target="_blank" rel="noopener noreferrer"
-              className="btn-pulse inline-flex items-center justify-center rounded-lg bg-brand-500 px-8 py-4 text-base font-semibold text-white uppercase tracking-wide hover:bg-brand-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/40 active:scale-[0.97] active:translate-y-0 transition-all duration-200">
-              Book a Free 15-Min Call
-            </a>
+            <BookCallButton
+              label="Book a Free 15-Min Call"
+              className="btn-pulse inline-flex items-center justify-center rounded-lg bg-brand-500 px-8 py-4 text-base font-semibold text-white uppercase tracking-wide hover:bg-brand-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/40 active:scale-[0.97] active:translate-y-0 transition-all duration-200"
+            />
             <a href={INVENTORY} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-8 py-4 text-base font-semibold text-white uppercase tracking-wide hover:border-brand-500/60 hover:bg-white/5 hover:-translate-y-1 hover:shadow-lg active:scale-[0.97] active:translate-y-0 transition-all duration-200">
               View Inventory & Rates

@@ -1,4 +1,5 @@
 import { Stethoscope, CreditCard, Truck, Briefcase, Clock } from 'lucide-react';
+import BookCallButton from '@/components/BookCallButton';
 
 const SEGMENTS = [
   {
@@ -96,11 +97,10 @@ export default function WhoWeHelp() {
                 and tell you exactly what we have available. No pressure, no obligation.
               </p>
             </div>
-            <a href="https://calendly.com/canyonaz/apartment-call?month=2026-05"
-              target="_blank" rel="noopener noreferrer"
-              className="flex-shrink-0 rounded-lg bg-brand-500 px-8 py-3.5 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/40 active:scale-[0.97] transition-all duration-200">
-              Book a Free Call
-            </a>
+            <BookCallButton
+              label="Book a Free Call"
+              className="flex-shrink-0 rounded-lg bg-brand-500 px-8 py-3.5 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/40 active:scale-[0.97] transition-all duration-200"
+            />
           </div>
         </div>
 

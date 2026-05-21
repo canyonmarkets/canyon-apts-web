@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
-const CALENDLY = 'https://calendly.com/canyonaz/apartment-call?month=2026-05';
+import BookCallButton from '@/components/BookCallButton';
 
 const NAV_LINKS = [
   { label: 'How It Works',  href: '#how-it-works' },
@@ -54,10 +53,10 @@ export default function Navbar() {
               {label}
             </a>
           ))}
-          <a href={CALENDLY} target="_blank" rel="noopener noreferrer"
-            className="ml-2 rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/30 active:scale-[0.97] transition-all duration-200">
-            Book a Call
-          </a>
+          <BookCallButton
+            label="Book a Call"
+            className="ml-2 rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/30 active:scale-[0.97] transition-all duration-200"
+          />
         </nav>
 
         {/* Mobile hamburger */}
@@ -79,10 +78,10 @@ export default function Navbar() {
               {label}
             </a>
           ))}
-          <a href={CALENDLY} target="_blank" rel="noopener noreferrer"
-            className="mt-3 rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white text-center hover:bg-brand-700 transition-colors duration-200">
-            Book a Call
-          </a>
+          <BookCallButton
+            label="Book a Call"
+            className="mt-3 rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white text-center hover:bg-brand-700 transition-colors duration-200 w-full"
+          />
         </nav>
       </div>
     </header>

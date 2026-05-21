@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
+import BookCallButton from '@/components/BookCallButton';
 
 const NAV_LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
@@ -8,7 +9,6 @@ const NAV_LINKS = [
   { label: 'FAQ',          href: '#faq' },
 ] as const;
 
-const CALENDLY = 'https://calendly.com/canyonaz/apartment-call?month=2026-05';
 const INVENTORY = 'https://docs.google.com/document/d/1WzosuTy5dRP1OoL5GROj5aP8jsY132h6Vmd9cVLiccw/edit?pli=1&tab=t.0';
 
 export default function Footer() {
@@ -49,10 +49,10 @@ export default function Footer() {
             <p className="text-xs font-mono tracking-[0.2em] uppercase text-stone-500 mb-4">Quick Links</p>
             <ul className="flex flex-col gap-2.5">
               <li>
-                <a href={CALENDLY} target="_blank" rel="noopener noreferrer"
-                  className="text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
-                  Book a 15-Min Call
-                </a>
+                <BookCallButton
+                  label="Book a 15-Min Call"
+                  className="text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200 text-left"
+                />
               </li>
               <li>
                 <a href={INVENTORY} target="_blank" rel="noopener noreferrer"

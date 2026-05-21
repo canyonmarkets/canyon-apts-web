@@ -1,4 +1,4 @@
-import { Stethoscope, CreditCard, Truck, Briefcase, Clock } from 'lucide-react';
+import { Stethoscope, CreditCard, Truck, Briefcase, Clock, Scale } from 'lucide-react';
 import BookCallButton from '@/components/BookCallButton';
 
 const SEGMENTS = [
@@ -36,6 +36,13 @@ const SEGMENTS = [
     headline: 'Stay a Week. Stay Six Months. Your Call.',
     body: 'Remodeling your house, going through a divorce, here for a project, or just need a break from your living situation? Our flexible weekly and monthly leases mean you stay exactly as long as you need — nothing more, nothing less.',
     tags: ['Week-to-Week', 'Month-to-Month', 'No Long Leases'],
+  },
+  {
+    icon: Scale,
+    label: 'Non-Violent Criminal Records',
+    headline: 'A Record Does Not Have to Define Your Housing.',
+    body: 'We work with many residents who have non-violent felonies or misdemeanors on their record and have been turned away by traditional landlords. We evaluate each situation individually and give people a fair chance. The only records we cannot work with are violent crimes and sexual offenses — everything else is worth a conversation.',
+    tags: ['Non-Violent Felonies Considered', 'Case-by-Case Basis', 'Fresh Start Welcome'],
   },
 ] as const;
 

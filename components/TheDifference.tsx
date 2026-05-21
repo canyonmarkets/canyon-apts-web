@@ -14,7 +14,7 @@ const CARDS = [
   {
     icon: Zap,
     title: 'Utilities Included',
-    body: 'Water, electricity, gas, and WiFi are all included in your weekly rate. No surprise bills, no setup hassle.',
+    body: 'Water, electricity, and gas are all included in your weekly rate. No surprise bills, no setup hassle.',
   },
   {
     icon: CalendarCheck,

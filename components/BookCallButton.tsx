@@ -19,7 +19,7 @@ const ITEMS = [
   {
     id: 'utilities',
     heading: 'Utilities are included in my weekly rate.',
-    text: 'Water, electricity, gas, and WiFi are all bundled into my weekly payment. There are no separate utility bills.',
+    text: 'Water, electricity, and gas are all bundled into my weekly payment. There are no separate utility bills.',
   },
   {
     id: 'credit',
@@ -27,9 +27,9 @@ const ITEMS = [
     text: 'Past evictions, low credit scores, non-traditional income, and most background issues do not disqualify me.',
   },
   {
-    id: 'ready',
-    heading: 'I am genuinely interested in housing.',
-    text: 'I am ready to have a real conversation about availability and a move-in timeline — not just browsing.',
+    id: 'faq',
+    heading: 'I have read the Frequently Asked Questions.',
+    text: 'I have reviewed the FAQ section on this website and am ready to speak with someone about my specific situation.',
   },
 ] as const;
 

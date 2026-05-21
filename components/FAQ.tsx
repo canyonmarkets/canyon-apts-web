@@ -10,7 +10,7 @@ const FAQS = [
   },
   {
     q: 'How much does it cost? What is included?',
-    a: 'Rates start at $495 per week for studio units. The rate includes the furnished apartment, all utilities (water, electric, gas), WiFi, and parking. There are no hidden fees or add-ons — what we quote is what you pay.',
+    a: 'Rates start at $495 per week for studio units. The rate includes the furnished apartment, all utilities (water, electric, gas), and parking. There are no hidden fees or add-ons — what we quote is what you pay.',
   },
   {
     q: 'How long can I stay?',

@@ -19,7 +19,7 @@ const AMENITIES = [
   {
     icon: Zap,
     title: 'Utilities Included',
-    body: 'Water, electricity, gas, and WiFi are all bundled into your weekly rate. One simple payment covers everything.',
+    body: 'Water, electricity, and gas are all bundled into your weekly rate. One simple payment covers everything.',
   },
   {
     icon: Car,

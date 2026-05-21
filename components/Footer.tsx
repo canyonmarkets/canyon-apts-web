@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import BookCallButton from '@/components/BookCallButton';
 
 const NAV_LINKS = [
@@ -67,20 +67,13 @@ export default function Footer() {
           <div>
             <p className="text-xs font-mono tracking-[0.2em] uppercase text-stone-500 mb-4">Contact</p>
             <div className="flex flex-col gap-3">
-              <a href="mailto:info@canyon-markets.com"
-                className="inline-flex items-center gap-2 text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
-                <Mail size={14} strokeWidth={1.5} />
-                info@canyon-markets.com
-              </a>
-              <a href="tel:+16029356830"
-                className="inline-flex items-center gap-2 text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
-                <Phone size={14} strokeWidth={1.5} />
-                (602) 935-6830
-              </a>
               <span className="inline-flex items-center gap-2 text-sm text-stone-400">
                 <MapPin size={14} strokeWidth={1.5} />
                 Phoenix Metro Area, AZ
               </span>
+              <p className="text-xs text-stone-500 leading-relaxed max-w-xs">
+                All inquiries handled through our appointment booking process. Please use the Book a Call button above.
+              </p>
             </div>
           </div>
 

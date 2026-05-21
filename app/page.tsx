@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import TheDifference from '@/components/TheDifference';
+import PricingBanner from '@/components/PricingBanner';
 import WhoWeHelp from '@/components/WhoWeHelp';
 import Amenities from '@/components/Amenities';
 import PhotoCarousel from '@/components/PhotoCarousel';
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <TheDifference />
+      <PricingBanner />
       <WhoWeHelp />
       <Amenities />
       <PhotoCarousel />

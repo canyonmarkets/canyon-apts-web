@@ -157,18 +157,17 @@ export default function LeadsPage() {
     <div className="flex flex-col bg-iron-100 font-sans" style={{ height: '100dvh' }}>
 
       {/* ── Header ──────────────────────────────────────────────────────────── */}
-      <header className="shrink-0 bg-white border-b border-iron-200 px-5">
-        <div className="h-14 flex items-center gap-3">
+      <header className="shrink-0 bg-iron-900 px-5">
+        <div className="h-16 flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo.png"
+            src="/Canyon%20PNG.png"
             alt="Canyon Apartments"
-            className="h-8 w-auto"
-            style={{ mixBlendMode: 'multiply' }}
+            className="h-10 w-auto"
           />
           <div className="leading-none">
-            <p className="font-display text-sm font-bold uppercase tracking-widest text-iron-900">
-              Canyon Apartments
+            <p className="font-display text-lg font-bold uppercase tracking-widest text-white">
+              Canyon Apts
             </p>
             <p className="text-[11px] text-iron-400 mt-0.5 tracking-wide">Follow-Up List</p>
           </div>

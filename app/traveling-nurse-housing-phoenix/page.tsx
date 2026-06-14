@@ -2,12 +2,20 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import BookCallButton from '@/components/BookCallButton';
 import { CheckCircle, Mail } from 'lucide-react';
+import { moneyPageJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Traveling Nurse Housing Phoenix AZ | Furnished Weekly',
   description: 'Traveling nurse housing in Phoenix, AZ. Fully furnished apartments for travel nurses on weekly and monthly contracts. Utilities included, flexible terms, fast move-in. Canyon Apartments.',
   alternates: { canonical: '/traveling-nurse-housing-phoenix' },
 };
+
+const jsonLd = moneyPageJsonLd({
+  name: 'Traveling Nurse Housing Phoenix',
+  path: '/traveling-nurse-housing-phoenix',
+  description:
+    'Furnished traveling nurse housing in Phoenix, AZ. Weekly and monthly terms near major hospitals, utilities included, flexible check-out, fast move-in.',
+});
 
 const HOSPITALS = [
   'Banner University Medical Center Phoenix',
@@ -23,6 +31,7 @@ const HOSPITALS = [
 export default function TravelingNursePage() {
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <section className="bg-stone-900 px-6 py-24">
         <div className="max-w-4xl mx-auto text-center">

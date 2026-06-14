@@ -2,12 +2,20 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import BookCallButton from '@/components/BookCallButton';
 import { CheckCircle, Mail } from 'lucide-react';
+import { moneyPageJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Furnished Apartments Phoenix AZ | Weekly & Monthly',
   description: 'Fully furnished apartments for rent in Phoenix, AZ. Week-to-week and month-to-month leases. Utilities included. No credit check required. Move in ready from $495/week. Canyon Apartments.',
   alternates: { canonical: '/furnished-apartments-phoenix' },
 };
+
+const jsonLd = moneyPageJsonLd({
+  name: 'Furnished Apartments Phoenix',
+  path: '/furnished-apartments-phoenix',
+  description:
+    'Fully furnished apartments for rent in Phoenix, AZ on weekly and monthly terms. Utilities included, no credit check, move-in ready from $495/week.',
+});
 
 const INCLUDED = [
   'Bed, pillows, and all bedding',
@@ -23,6 +31,7 @@ const INCLUDED = [
 export default function FurnishedApartmentsPage() {
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* ── Hero ── */}
       <section className="bg-stone-900 px-6 py-24">

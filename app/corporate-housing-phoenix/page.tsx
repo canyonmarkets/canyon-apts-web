@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import BookCallButton from '@/components/BookCallButton';
 import { CheckCircle, Mail } from 'lucide-react';
+import { moneyPageJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Corporate Housing Phoenix AZ | Furnished Monthly Rentals',
@@ -9,9 +10,17 @@ export const metadata: Metadata = {
   alternates: { canonical: '/corporate-housing-phoenix' },
 };
 
+const jsonLd = moneyPageJsonLd({
+  name: 'Corporate Housing Phoenix',
+  path: '/corporate-housing-phoenix',
+  description:
+    'Furnished corporate housing in Phoenix, AZ for relocations, projects, and assignment workers. Utilities included, flexible monthly terms, fast direct booking, no credit check.',
+});
+
 export default function CorporateHousingPage() {
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <section className="bg-stone-900 px-6 py-24">
         <div className="max-w-4xl mx-auto text-center">

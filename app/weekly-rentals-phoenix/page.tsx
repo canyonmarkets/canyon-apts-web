@@ -2,12 +2,20 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import BookCallButton from '@/components/BookCallButton';
 import { CheckCircle, Mail } from 'lucide-react';
+import { moneyPageJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'Weekly Apartment Rentals Phoenix AZ | From $495/Week',
   description: 'Weekly apartment rentals in Phoenix, AZ starting at $495/week. Fully furnished, utilities included, no credit check. Flexible week-to-week leases with same-day move-in available. Canyon Apartments.',
   alternates: { canonical: '/weekly-rentals-phoenix' },
 };
+
+const jsonLd = moneyPageJsonLd({
+  name: 'Weekly Apartment Rentals Phoenix',
+  path: '/weekly-rentals-phoenix',
+  description:
+    'Furnished weekly apartment rentals in Phoenix, AZ from $495/week. Utilities included, no credit check, week-to-week flexibility with same-day move-in available.',
+});
 
 const USE_CASES = [
   { title: 'Home Renovation', body: 'Your contractor said 3 weeks — it\'s been 6. Stay somewhere comfortable while the work gets done.' },
@@ -21,6 +29,7 @@ const USE_CASES = [
 export default function WeeklyRentalsPage() {
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* ── Hero ── */}
       <section className="bg-stone-900 px-6 py-24">

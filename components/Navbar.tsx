@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import BookCallButton from '@/components/BookCallButton';
 
 const NAV_LINKS = [
@@ -53,6 +54,10 @@ export default function Navbar() {
               {label}
             </a>
           ))}
+          <Link href="/guides"
+            className="nav-link text-sm font-medium text-stone-600 hover:text-brand-600 transition-colors duration-200">
+            Guides
+          </Link>
           <BookCallButton
             label="Book a Call"
             className="btn-shine ml-2 rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/30 active:scale-[0.97] transition-all duration-200"
@@ -78,6 +83,11 @@ export default function Navbar() {
               {label}
             </a>
           ))}
+          <Link href="/guides"
+            onClick={() => setMenuOpen(false)}
+            className="py-3 text-sm font-medium text-stone-600 hover:text-brand-600 border-b border-stone-100 last:border-0 transition-colors duration-200">
+            Guides
+          </Link>
           <BookCallButton
             label="Book a Call"
             className="mt-3 rounded-lg bg-brand-600 px-5 py-3 text-sm font-semibold text-white text-center hover:bg-brand-700 transition-colors duration-200 w-full"

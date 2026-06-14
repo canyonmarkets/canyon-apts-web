@@ -2,12 +2,20 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import BookCallButton from '@/components/BookCallButton';
 import { CheckCircle, Mail } from 'lucide-react';
+import { moneyPageJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   title: 'No Credit Check Apartments Phoenix AZ | From $495/Week',
   description: 'Looking for no credit check apartments in Phoenix, AZ? Canyon Apartments rents fully furnished weekly and monthly apartments with no credit check, no rental history required. Move in this week from $495.',
   alternates: { canonical: '/no-credit-check-apartments-phoenix' },
 };
+
+const jsonLd = moneyPageJsonLd({
+  name: 'No Credit Check Apartments Phoenix',
+  path: '/no-credit-check-apartments-phoenix',
+  description:
+    'Furnished no-credit-check apartments in Phoenix, AZ. No hard or soft credit pull, evictions and bad credit welcome, utilities included, move in this week from $495.',
+});
 
 const QUALIFIES = [
   'Bad credit or no credit history',
@@ -23,6 +31,7 @@ const QUALIFIES = [
 export default function NoCreditCheckPage() {
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* ── Hero ── */}
       <section className="bg-stone-900 px-6 py-24">

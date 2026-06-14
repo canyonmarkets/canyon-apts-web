@@ -58,7 +58,7 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
       {
         '@type': 'Service',
         name: `${type.name} in ${c.name}, AZ`,
-        provider: { '@type': 'LocalBusiness', name: SITE.name, telephone: SITE.phone },
+        provider: { '@id': `${SITE.baseUrl}/#business` },
         areaServed: { '@type': 'City', name: `${c.name}, Arizona` },
         description: intro,
         url: `${SITE.baseUrl}/${type.slug}/${c.slug}`,

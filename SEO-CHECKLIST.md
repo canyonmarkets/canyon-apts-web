@@ -42,7 +42,7 @@ This is the **#1 thing** that drives local "furnished apartments Phoenix" map pa
 - [ ] Click **Add your business**
 - [ ] Business name: **Canyon Apts**
 - [ ] Category: **Furnished Apartment Building** (or "Extended Stay Hotel" if not available)
-- [ ] Add your phone number: (602) 935-6830
+- [ ] Add your phone number: (623) 230-7020
 - [ ] Website: https://canyon-apts.com
 - [ ] Service area: Phoenix, Tempe, Mesa, Gilbert, Chandler (do NOT add a physical storefront address if you don't want the address public)
 - [ ] Verify via phone call or postcard

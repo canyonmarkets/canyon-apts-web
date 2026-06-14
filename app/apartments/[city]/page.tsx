@@ -81,7 +81,7 @@ export default async function CityHubPage({ params }: { params: Promise<Params> 
       {/* Hero */}
       <section className="bg-stone-900 px-6 py-24">
         <Reveal className="max-w-4xl mx-auto text-center">
-          <p className="text-brand-500 font-mono text-sm tracking-[0.3em] uppercase mb-4">{c.name}, AZ · East Valley</p>
+          <p className="text-brand-500 font-mono text-sm tracking-[0.3em] uppercase mb-4">{c.name}, AZ · Phoenix Metro</p>
           <h1 className="font-display font-bold text-3xl sm:text-5xl uppercase tracking-wide text-white leading-tight mb-6">
             Furnished Apartments in {c.name}, AZ
           </h1>

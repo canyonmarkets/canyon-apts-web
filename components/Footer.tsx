@@ -92,6 +92,11 @@ export default function Footer() {
                 />
               </li>
               <li>
+                <Link href="/guides" className="nav-link inline-block text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
+                  Housing Guides
+                </Link>
+              </li>
+              <li>
                 <a href={INVENTORY} target="_blank" rel="noopener noreferrer"
                   className="nav-link inline-block text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
                   View Inventory & Rates

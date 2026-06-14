@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import BookCallButton from '@/components/BookCallButton';
+import HeroCTAButtons from '@/components/HeroCTAButtons';
 import { CheckCircle, Mail } from 'lucide-react';
 import { moneyPageJsonLd } from '@/lib/jsonld';
 
@@ -45,12 +46,7 @@ export default function WeeklyRentalsPage() {
             Gilbert, and Chandler. Starting at $495 per week — utilities included, no credit check,
             same-day move-in often available.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <BookCallButton
-              label="Check Weekly Availability"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-700 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/40"
-            />
-          </div>
+          <HeroCTAButtons />
         </div>
       </section>
 
@@ -134,6 +130,8 @@ export default function WeeklyRentalsPage() {
             <Link href="/furnished-apartments-phoenix" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">Furnished Apartments Phoenix</Link>
             <Link href="/corporate-housing-phoenix" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">Corporate Housing Phoenix</Link>
             <Link href="/traveling-nurse-housing-phoenix" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">Traveling Nurse Housing</Link>
+            <Link href="/guides/extended-stay-hotels-vs-furnished-apartments-phoenix" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">Extended-Stay Hotel vs. Apartment</Link>
+            <Link href="/guides" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">All Housing Guides</Link>
             <Link href="/" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">← Canyon Apartments Home</Link>
           </div>
         </div>

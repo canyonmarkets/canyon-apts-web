@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import BookCallButton from '@/components/BookCallButton';
+import HeroCTAButtons from '@/components/HeroCTAButtons';
 import { CheckCircle, Mail } from 'lucide-react';
 import { moneyPageJsonLd } from '@/lib/jsonld';
 
@@ -47,12 +48,7 @@ export default function NoCreditCheckPage() {
             with absolutely no credit check. No hard pull, no soft pull, no rental history required.
             Rates start at $495 per week — utilities included.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <BookCallButton
-              label="Book a Free 15-Min Call"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-700 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/40"
-            />
-          </div>
+          <HeroCTAButtons />
         </div>
       </section>
 
@@ -120,6 +116,12 @@ export default function NoCreditCheckPage() {
             </Link>
             <Link href="/traveling-nurse-housing-phoenix" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">
               Traveling Nurse Housing
+            </Link>
+            <Link href="/guides/no-credit-check-apartments-phoenix-how-they-work" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">
+              How No-Credit-Check Works
+            </Link>
+            <Link href="/guides/renting-with-eviction-arizona" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">
+              Renting With an Eviction
             </Link>
             <Link href="/" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">
               ← Back to Canyon Apartments

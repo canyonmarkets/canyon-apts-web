@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MapPin, ChevronDown } from 'lucide-react';
 import BookCallButton from '@/components/BookCallButton';
+import HeroCTAButtons from '@/components/HeroCTAButtons';
 import Reveal from '@/components/Reveal';
 import { SITE } from '@/lib/site';
 import { HOUSING_TYPES } from '@/lib/housingTypes';
@@ -93,11 +94,8 @@ export default async function CityHubPage({ params }: { params: Promise<Params> 
               {c.name} units are coming soon — ask about upcoming availability.
             </p>
           )}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
-            <BookCallButton
-              label="Check Availability"
-              className="btn-shine inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-700 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/40"
-            />
+          <div className="mt-2">
+            <HeroCTAButtons />
           </div>
         </Reveal>
       </section>

@@ -10,6 +10,9 @@ export const SITE = {
   phoneHref: 'tel:+16232307020',
   email: 'info@canyon-markets.com',
   serviceArea: 'Phoenix Metro Area, AZ',
+  /** Live inventory + rates (Google Doc). Single source of truth for the "View Inventory" CTA. */
+  inventoryUrl:
+    'https://docs.google.com/document/d/1WzosuTy5dRP1OoL5GROj5aP8jsY132h6Vmd9cVLiccw/edit?pli=1&tab=t.0',
   foundedYear: 2017,
   startingWeeklyRate: 495,
 } as const;

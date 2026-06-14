@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import BookCallButton from '@/components/BookCallButton';
+import HeroCTAButtons from '@/components/HeroCTAButtons';
 import { CheckCircle, Mail } from 'lucide-react';
 import { moneyPageJsonLd } from '@/lib/jsonld';
 
@@ -44,12 +45,7 @@ export default function TravelingNursePage() {
             Week-to-week and month-to-month leases that flex with your contract. Utilities included.
             Move in fast — often same week you call.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <BookCallButton
-              label="Check Availability"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-700 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/40"
-            />
-          </div>
+          <HeroCTAButtons />
         </div>
       </section>
 
@@ -102,6 +98,8 @@ export default function TravelingNursePage() {
             <Link href="/weekly-rentals-phoenix" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">Weekly Rentals Phoenix</Link>
             <Link href="/corporate-housing-phoenix" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">Corporate Housing Phoenix</Link>
             <Link href="/no-credit-check-apartments-phoenix" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">No Credit Check Apartments</Link>
+            <Link href="/guides/traveling-nurse-housing-phoenix-guide" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">Travel Nurse Housing Guide</Link>
+            <Link href="/guides" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">All Housing Guides</Link>
             <Link href="/" className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">← Canyon Apartments</Link>
           </div>
         </div>

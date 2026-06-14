@@ -3,12 +3,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CheckCircle, MapPin, ChevronDown } from 'lucide-react';
 import BookCallButton from '@/components/BookCallButton';
+import HeroCTAButtons from '@/components/HeroCTAButtons';
 import Reveal from '@/components/Reveal';
 import { SITE } from '@/lib/site';
 import { HOUSING_TYPES, getHousingType } from '@/lib/housingTypes';
 import { SPOKE_CITIES, getCity } from '@/lib/cities';
 import { hospitalsForCity } from '@/lib/hospitals';
 import { getSpokesFaqs } from '@/lib/faqs';
+import { getGuide } from '@/lib/guides';
 
 export const dynamicParams = false;
 
@@ -51,6 +53,7 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
   const isNurse = type.slug === 'traveling-nurse-housing';
   const hospitals = hospitalsForCity(c.slug);
   const faqs = getSpokesFaqs(type.slug, c.name);
+  const relatedGuides = type.relatedGuides.map(getGuide).filter((g) => g !== undefined);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -99,11 +102,8 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
               Units in {c.name} are coming soon — ask about upcoming availability.
             </p>
           )}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-2">
-            <BookCallButton
-              label="Check Availability"
-              className="btn-shine inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-700 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/40"
-            />
+          <div className="mt-2">
+            <HeroCTAButtons />
           </div>
         </Reveal>
       </section>
@@ -242,6 +242,36 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
           </div>
         </div>
       </section>
+
+      {/* Helpful Guides */}
+      {relatedGuides.length > 0 && (
+        <section className="px-6 py-16 bg-stone-50 border-t border-stone-100">
+          <div className="max-w-4xl mx-auto">
+            <Reveal className="text-center mb-8">
+              <p className="text-brand-600 font-mono text-sm tracking-[0.3em] uppercase mb-3">Helpful Guides</p>
+              <h2 className="font-display font-bold text-xl sm:text-3xl uppercase tracking-wide text-stone-900">
+                Read Before You Move
+              </h2>
+            </Reveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {relatedGuides.map((g) => (
+                <Link key={g!.slug} href={`/guides/${g!.slug}`}
+                  className="group flex flex-col gap-2 p-5 rounded-xl border border-stone-200 bg-white hover:border-brand-500 transition-colors duration-200">
+                  <span className="font-display font-bold text-sm uppercase tracking-wide text-stone-900 group-hover:text-brand-600 transition-colors duration-200 leading-snug">
+                    {g!.title}
+                  </span>
+                  <span className="text-brand-600 text-xs font-semibold uppercase tracking-wide">Read guide →</span>
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-6">
+              <Link href="/guides" className="text-sm text-brand-600 hover:text-brand-700 font-semibold transition-colors duration-200">
+                Browse all Phoenix housing guides →
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="px-6 py-20 bg-brand-800">

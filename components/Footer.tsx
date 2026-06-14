@@ -4,6 +4,7 @@ import BookCallButton from '@/components/BookCallButton';
 import Reveal from '@/components/Reveal';
 import { HOUSING_TYPES } from '@/lib/housingTypes';
 import { SPOKE_CITIES } from '@/lib/cities';
+import { SITE } from '@/lib/site';
 
 const NAV_LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
@@ -12,8 +13,6 @@ const NAV_LINKS = [
   { label: 'Locations',    href: '#locations' },
   { label: 'FAQ',          href: '#faq' },
 ] as const;
-
-const INVENTORY = 'https://docs.google.com/document/d/1WzosuTy5dRP1OoL5GROj5aP8jsY132h6Vmd9cVLiccw/edit?pli=1&tab=t.0';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -97,7 +96,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href={INVENTORY} target="_blank" rel="noopener noreferrer"
+                <a href={SITE.inventoryUrl} target="_blank" rel="noopener noreferrer"
                   className="nav-link inline-block text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
                   View Inventory & Rates
                 </a>

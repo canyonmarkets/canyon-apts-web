@@ -20,6 +20,8 @@ export type HousingType = {
   benefits: string[];
   metaTitle: string; // include {city}
   metaDescription: string; // include {city}
+  /** Slugs of the most topically relevant /guides articles for this type. */
+  relatedGuides: string[];
 };
 
 export const HOUSING_TYPES: HousingType[] = [
@@ -42,6 +44,11 @@ export const HOUSING_TYPES: HousingType[] = [
     metaTitle: 'Furnished Apartments {city} AZ | Weekly & Monthly',
     metaDescription:
       'Fully furnished apartments in {city}, AZ. Utilities included, weekly & monthly terms, no credit check, fast move-in. Canyon Apartments.',
+    relatedGuides: [
+      'furnished-vs-unfurnished-short-term-phoenix',
+      'extended-stay-hotels-vs-furnished-apartments-phoenix',
+      'moving-to-phoenix-temporary-housing',
+    ],
   },
   {
     slug: 'no-credit-check-apartments',
@@ -62,6 +69,10 @@ export const HOUSING_TYPES: HousingType[] = [
     metaTitle: 'No Credit Check Apartments {city} AZ | Furnished',
     metaDescription:
       'No-credit-check furnished apartments in {city}, AZ. Evictions OK, no rental history required, utilities included, move in this week. Canyon Apartments.',
+    relatedGuides: [
+      'no-credit-check-apartments-phoenix-how-they-work',
+      'renting-with-eviction-arizona',
+    ],
   },
   {
     slug: 'weekly-rentals',
@@ -82,6 +93,10 @@ export const HOUSING_TYPES: HousingType[] = [
     metaTitle: 'Weekly Apartment Rentals {city} AZ | Furnished',
     metaDescription:
       'Furnished weekly apartment rentals in {city}, AZ from $495/week. Utilities included, no credit check, week-to-week flexibility. Canyon Apartments.',
+    relatedGuides: [
+      'extended-stay-hotels-vs-furnished-apartments-phoenix',
+      'moving-to-phoenix-temporary-housing',
+    ],
   },
   {
     slug: 'traveling-nurse-housing',
@@ -102,6 +117,10 @@ export const HOUSING_TYPES: HousingType[] = [
     metaTitle: 'Traveling Nurse Housing {city} AZ | Furnished Weekly',
     metaDescription:
       'Furnished traveling nurse housing in {city}, AZ. Weekly & monthly terms near major hospitals, utilities included, fast move-in. Canyon Apartments.',
+    relatedGuides: [
+      'traveling-nurse-housing-phoenix-guide',
+      'moving-to-phoenix-temporary-housing',
+    ],
   },
   {
     slug: 'corporate-housing',
@@ -122,6 +141,10 @@ export const HOUSING_TYPES: HousingType[] = [
     metaTitle: 'Corporate Housing {city} AZ | Furnished Monthly',
     metaDescription:
       'Furnished corporate housing in {city}, AZ for relocations and assignments. Utilities included, flexible monthly terms, fast move-in. Canyon Apartments.',
+    relatedGuides: [
+      'moving-to-phoenix-temporary-housing',
+      'furnished-vs-unfurnished-short-term-phoenix',
+    ],
   },
 ];
 

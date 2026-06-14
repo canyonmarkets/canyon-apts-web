@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { X, CheckSquare, Square, ArrowRight } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 const CALENDLY = 'https://calendly.com/canyonaz/apartment-call?month=2026-05';
 
@@ -48,6 +49,8 @@ export default function BookCallButton({
 
   const handleProceed = () => {
     if (!allChecked) return;
+    // Strongest conversion signal: user read + checked all 4 items, then clicked Book
+    trackEvent('generate_lead', { method: 'calendly', lead_source: 'book_call_button' });
     setOpen(false);
     setChecked({});
     window.open(CALENDLY, '_blank', 'noopener,noreferrer');
@@ -61,7 +64,13 @@ export default function BookCallButton({
   return (
     <>
       {/* Trigger button */}
-      <button onClick={() => setOpen(true)} className={className}>
+      <button
+        onClick={() => {
+          setOpen(true);
+          trackEvent('booking_modal_open');
+        }}
+        className={className}
+      >
         {label}
       </button>
 

@@ -7,11 +7,11 @@ import { SPOKE_CITIES } from '@/lib/cities';
 import { SITE } from '@/lib/site';
 
 const NAV_LINKS = [
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Who We Help',  href: '#who-we-help' },
-  { label: 'Amenities',    href: '#amenities' },
-  { label: 'Locations',    href: '#locations' },
-  { label: 'FAQ',          href: '#faq' },
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Who We Help',  href: '/#who-we-help' },
+  { label: 'Amenities',    href: '/#amenities' },
+  { label: 'Locations',    href: '/#locations' },
+  { label: 'FAQ',          href: '/#faq' },
 ] as const;
 
 export default function Footer() {

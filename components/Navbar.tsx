@@ -24,6 +24,12 @@ export default function Navbar() {
 
   const handleLink = (href: string) => {
     setMenuOpen(false);
+    // On the homepage, smooth-scroll to the section. On any other page, the
+    // section doesn't exist here, so navigate home + jump to the anchor.
+    if (window.location.pathname !== '/') {
+      window.location.href = `/${href}`;
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };

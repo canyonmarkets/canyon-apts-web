@@ -9,7 +9,7 @@
 - Work in **`C:\Users\jeffm\Documents\CLAUDE\VENDING\canyon-apts-web`**. Stack: Next.js 16 (App Router) + React + TS + Tailwind v4. Netlify auto-deploys `main`.
 - **Always `npm run build` before pushing** (catches TS errors; confirms all routes prerender). The dev server throws a harmless PhotoCarousel hydration warning — **ignore it; production build is clean.**
 - **Keep the light/white brand theme.** Reuse the polish components: `Reveal`, `TiltCard`, `CountUp`/`StatBar`, `Marquee`, `SectionDivider`, `PageChrome`, plus CSS classes `btn-shine` / `nav-link` / `text-gradient-animate` in `app/globals.css`. All motion is `prefers-reduced-motion`-gated.
-- **NAP must stay identical everywhere** (matches Paige/GBP): name **Canyon Apartments** · **(602) 935-6830** · service-area (no public address) · email `info@canyon-markets.com`. Source of truth: `lib/site.ts`.
+- **NAP must stay identical everywhere** (matches Paige/GBP): name **Canyon Apartments** · **(623) 230-7020** · service-area (no public address) · email `info@canyon-markets.com`. Source of truth: `lib/site.ts`.
 - **If tempted to change URL structure or canonical strategy, STOP and ask Jeff.** That's the one architectural fork left.
 
 ---
@@ -59,7 +59,7 @@
 ---
 
 ## 4. Conversion (CRO) — turn the new traffic into bookings
-- Already live: above-fold CTA, **click-to-call** `(602) 935-6830`, sticky mobile CTA, pre-screening modal → Calendly, trust stat bar, fast load.
+- Already live: above-fold CTA, sticky mobile CTA, pre-screening modal → Calendly, trust stat bar, fast load. (Phone removed from public UI; lives only in JSON-LD schema.)
 - [ ] **Lead form on spokes/hubs** (not just Calendly) — capture visitors who won't book a call yet. `/api/leads-notify` exists; **confirm `RESEND_API_KEY` is set on Netlify** (it was flagged missing for the follow-up app — verify here too).
 - [ ] **Social proof on money pages:** pull 2–3 real Google reviews onto spokes/hubs once available.
 - [ ] **Mobile pass:** verify every new page on a real mobile viewport (most local + Craigslist/FB traffic is mobile). Check hero, CTAs, tap targets.

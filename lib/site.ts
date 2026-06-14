@@ -6,8 +6,8 @@
 export const SITE = {
   name: 'Canyon Apartments',
   baseUrl: 'https://canyon-apts.com',
-  phone: '(602) 935-6830',
-  phoneHref: 'tel:+16029356830',
+  phone: '(623) 230-7020',
+  phoneHref: 'tel:+16232307020',
   email: 'info@canyon-markets.com',
   serviceArea: 'Phoenix Metro Area, AZ',
   foundedYear: 2017,

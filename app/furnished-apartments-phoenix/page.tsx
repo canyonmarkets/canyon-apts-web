@@ -4,7 +4,7 @@ import BookCallButton from '@/components/BookCallButton';
 import { CheckCircle, Phone, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Furnished Apartments Phoenix AZ | Canyon Apartments | Weekly & Monthly',
+  title: 'Furnished Apartments Phoenix AZ | Weekly & Monthly',
   description: 'Fully furnished apartments for rent in Phoenix, AZ. Week-to-week and month-to-month leases. Utilities included. No credit check required. Move in ready from $495/week. Canyon Apartments.',
   alternates: { canonical: '/furnished-apartments-phoenix' },
 };

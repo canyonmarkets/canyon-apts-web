@@ -1,6 +1,9 @@
+import Link from 'next/link';
 import { MapPin } from 'lucide-react';
 import BookCallButton from '@/components/BookCallButton';
 import Reveal from '@/components/Reveal';
+import { HOUSING_TYPES } from '@/lib/housingTypes';
+import { SPOKE_CITIES } from '@/lib/cities';
 
 const NAV_LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
@@ -20,10 +23,10 @@ export default function Footer() {
       {/* Top accent glow */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-500/60 to-transparent" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-        <Reveal className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-stone-700">
+        <Reveal className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 pb-10 border-b border-stone-700">
 
           {/* Brand */}
-          <div className="flex flex-col gap-4">
+          <div className="col-span-2 md:col-span-3 lg:col-span-1 flex flex-col gap-4">
             <span className="font-display font-bold text-2xl tracking-widest uppercase text-gradient-animate">
               Canyon Apartments
             </span>
@@ -31,6 +34,37 @@ export default function Footer() {
               Fully furnished weekly and monthly rentals across the Phoenix metro.
               No credit check. Utilities included. Move in this week.
             </p>
+          </div>
+
+          {/* Housing Types */}
+          <div>
+            <p className="text-xs font-mono tracking-[0.2em] uppercase text-stone-500 mb-4">Housing Types</p>
+            <ul className="flex flex-col gap-2.5">
+              {HOUSING_TYPES.map((t) => (
+                <li key={t.slug}>
+                  <Link href={t.phoenixHub} className="nav-link inline-block text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
+                    {t.shortName}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Cities */}
+          <div>
+            <p className="text-xs font-mono tracking-[0.2em] uppercase text-stone-500 mb-4">Cities</p>
+            <ul className="flex flex-col gap-2.5">
+              {SPOKE_CITIES.map((c) => (
+                <li key={c.slug}>
+                  <Link href={`/apartments/${c.slug}`} className="nav-link inline-flex items-center gap-1.5 text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
+                    {c.name}
+                    {c.comingSoon && (
+                      <span className="text-[10px] font-mono text-brand-600 uppercase tracking-wide">Soon</span>
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Navigation */}

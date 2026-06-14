@@ -4,7 +4,7 @@ import BookCallButton from '@/components/BookCallButton';
 import { CheckCircle, Phone, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Weekly Apartment Rentals Phoenix AZ | Canyon Apartments | From $495/Week',
+  title: 'Weekly Apartment Rentals Phoenix AZ | From $495/Week',
   description: 'Weekly apartment rentals in Phoenix, AZ starting at $495/week. Fully furnished, utilities included, no credit check. Flexible week-to-week leases with same-day move-in available. Canyon Apartments.',
   alternates: { canonical: '/weekly-rentals-phoenix' },
 };

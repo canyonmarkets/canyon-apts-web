@@ -1,13 +1,14 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { CheckCircle, Phone, MapPin } from 'lucide-react';
+import { CheckCircle, Phone, MapPin, ChevronDown } from 'lucide-react';
 import BookCallButton from '@/components/BookCallButton';
 import Reveal from '@/components/Reveal';
 import { SITE } from '@/lib/site';
 import { HOUSING_TYPES, getHousingType } from '@/lib/housingTypes';
 import { SPOKE_CITIES, getCity } from '@/lib/cities';
 import { hospitalsForCity } from '@/lib/hospitals';
+import { getSpokesFaqs } from '@/lib/faqs';
 
 export const dynamicParams = false;
 
@@ -45,9 +46,11 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
 
   const h1 = fill(type.h1, c.name);
   const intro = fill(type.intro, c.name);
+  const prose = fill(type.detailedProse, c.name);
   const benefits = type.benefits.map((b) => fill(b, c.name));
   const isNurse = type.slug === 'traveling-nurse-housing';
   const hospitals = hospitalsForCity(c.slug);
+  const faqs = getSpokesFaqs(type.slug, c.name);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -67,6 +70,14 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
           { '@type': 'ListItem', position: 2, name: type.name, item: `${SITE.baseUrl}${type.phoenixHub}` },
           { '@type': 'ListItem', position: 3, name: `${type.name} ${c.name}`, item: `${SITE.baseUrl}/${type.slug}/${c.slug}` },
         ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(({ q, a }) => ({
+          '@type': 'Question',
+          name: q,
+          acceptedAnswer: { '@type': 'Answer', text: a },
+        })),
       },
     ],
   };
@@ -119,19 +130,38 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
         </div>
       </section>
 
-      {/* Local context */}
+      {/* About / detailed prose */}
       <section className="px-6 py-20 bg-white">
-        <Reveal className="max-w-4xl mx-auto text-center">
+        <Reveal className="max-w-4xl mx-auto">
+          <h2 className="font-display font-bold text-2xl sm:text-4xl uppercase tracking-wide text-stone-900 mb-8">
+            Why Canyon Apartments for {type.name} in {c.name}
+          </h2>
+          {prose.split('\n\n').map((para, i) => (
+            <p key={i} className="text-stone-600 text-base leading-relaxed mb-5 last:mb-0">{para}</p>
+          ))}
+        </Reveal>
+      </section>
+
+      {/* Local context */}
+      <section className="px-6 py-20 bg-stone-50">
+        <Reveal className="max-w-4xl mx-auto">
           <h2 className="font-display font-bold text-2xl sm:text-4xl uppercase tracking-wide text-stone-900 mb-4 inline-flex items-center gap-3">
             <MapPin size={28} strokeWidth={1.5} className="text-brand-600" /> Living in {c.name}
           </h2>
-          <p className="text-stone-600 text-base leading-relaxed max-w-2xl mx-auto">{c.blurb}</p>
+          <p className="text-stone-600 text-base leading-relaxed mb-6">{c.blurb}</p>
+          {c.anchors.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {c.anchors.map((anchor) => (
+                <span key={anchor} className="px-3 py-1.5 rounded-full border border-stone-200 bg-white text-stone-600 text-xs">{anchor}</span>
+              ))}
+            </div>
+          )}
         </Reveal>
       </section>
 
       {/* Hospitals (traveling-nurse only) */}
       {isNurse && hospitals.length > 0 && (
-        <section className="px-6 py-20 bg-stone-50">
+        <section className="px-6 py-20 bg-white">
           <div className="max-w-4xl mx-auto">
             <Reveal>
               <h2 className="font-display font-bold text-2xl sm:text-4xl uppercase tracking-wide text-stone-900 text-center mb-4">
@@ -143,12 +173,35 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
             </Reveal>
             <div className="flex flex-wrap gap-3 justify-center">
               {hospitals.map((h) => (
-                <span key={h.name} className="px-4 py-2 rounded-full border border-stone-200 bg-white text-stone-700 text-sm">{h.name}</span>
+                <span key={h.name} className="px-4 py-2 rounded-full border border-stone-200 bg-stone-50 text-stone-700 text-sm">{h.name}</span>
               ))}
             </div>
           </div>
         </section>
       )}
+
+      {/* FAQ */}
+      <section className="px-6 py-20 bg-stone-50">
+        <div className="max-w-4xl mx-auto">
+          <Reveal className="text-center mb-10">
+            <p className="text-brand-600 font-mono text-sm tracking-[0.3em] uppercase mb-3">FAQ</p>
+            <h2 className="font-display font-bold text-2xl sm:text-4xl uppercase tracking-wide text-stone-900">
+              Common Questions
+            </h2>
+          </Reveal>
+          <div className="flex flex-col gap-3">
+            {faqs.map(({ q, a }) => (
+              <details key={q} className="group rounded-xl border border-stone-200 bg-white overflow-hidden">
+                <summary className="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none hover:bg-stone-50 transition-colors duration-200">
+                  <span className="font-display font-bold text-base uppercase tracking-wide text-stone-900 leading-snug">{q}</span>
+                  <ChevronDown size={18} strokeWidth={2} className="flex-shrink-0 text-brand-600 transition-transform duration-300 group-open:rotate-180" />
+                </summary>
+                <p className="px-6 pb-6 text-stone-600 text-sm leading-relaxed">{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Internal links: sibling types in this city + this type in other cities */}
       <section className="px-6 py-12 bg-white border-t border-stone-100">
@@ -160,6 +213,10 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
                 {t.shortName} in {c.name}
               </Link>
             ))}
+            <Link href={`/apartments/${c.slug}`}
+              className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">
+              All Housing in {c.name}
+            </Link>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link href={type.phoenixHub} className="px-4 py-2 rounded-lg border border-stone-200 text-sm text-stone-600 hover:border-brand-500 hover:text-brand-600 transition-colors duration-200">

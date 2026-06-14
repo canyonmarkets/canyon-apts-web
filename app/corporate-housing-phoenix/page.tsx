@@ -4,7 +4,7 @@ import BookCallButton from '@/components/BookCallButton';
 import { CheckCircle, Phone, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Corporate Housing Phoenix AZ | Canyon Apartments | Furnished Monthly Rentals',
+  title: 'Corporate Housing Phoenix AZ | Furnished Monthly Rentals',
   description: 'Corporate housing in Phoenix, AZ. Fully furnished monthly apartments for business travelers, relocating employees, and project-based assignments. Utilities included, no credit check, fast move-in.',
   alternates: { canonical: '/corporate-housing-phoenix' },
 };

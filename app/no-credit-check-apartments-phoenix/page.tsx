@@ -4,7 +4,7 @@ import BookCallButton from '@/components/BookCallButton';
 import { CheckCircle, Phone, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'No Credit Check Apartments Phoenix AZ | Canyon Apartments | From $495/Week',
+  title: 'No Credit Check Apartments Phoenix AZ | From $495/Week',
   description: 'Looking for no credit check apartments in Phoenix, AZ? Canyon Apartments rents fully furnished weekly and monthly apartments with no credit check, no rental history required. Move in this week from $495.',
   alternates: { canonical: '/no-credit-check-apartments-phoenix' },
 };

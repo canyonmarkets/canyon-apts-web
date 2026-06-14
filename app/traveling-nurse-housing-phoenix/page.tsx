@@ -4,7 +4,7 @@ import BookCallButton from '@/components/BookCallButton';
 import { CheckCircle, Phone, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Traveling Nurse Housing Phoenix AZ | Canyon Apartments | Furnished Weekly',
+  title: 'Traveling Nurse Housing Phoenix AZ | Furnished Weekly',
   description: 'Traveling nurse housing in Phoenix, AZ. Fully furnished apartments for travel nurses on weekly and monthly contracts. Utilities included, flexible terms, fast move-in. Canyon Apartments.',
   alternates: { canonical: '/traveling-nurse-housing-phoenix' },
 };

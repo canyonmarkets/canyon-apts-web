@@ -173,6 +173,19 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
                 <span key={h.name} className="px-4 py-2 rounded-full border border-stone-200 bg-stone-50 text-stone-700 text-sm">{h.name}</span>
               ))}
             </div>
+            {hospitals.length > 0 && (
+              <Reveal>
+                <p className="text-stone-600 text-sm leading-relaxed text-center mt-8 max-w-2xl mx-auto">
+                  Canyon Apartments has furnished units near{' '}
+                  {hospitals.length === 1
+                    ? hospitals[0].name
+                    : hospitals.length === 2
+                    ? `${hospitals[0].name} and ${hospitals[1].name}`
+                    : `${hospitals.slice(0, -1).map((h) => h.name).join(', ')}, and ${hospitals[hospitals.length - 1].name}`}{' '}
+                  in {c.name}, AZ. Call and we&apos;ll match you to the closest available furnished unit to your specific assignment location.
+                </p>
+              </Reveal>
+            )}
           </div>
         </section>
       )}

@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { HOUSING_TYPES } from '@/lib/housingTypes';
 import { SPOKE_CITIES } from '@/lib/cities';
+import { GUIDES } from '@/lib/guides';
 
 const BASE = 'https://canyon-apts.com';
 
@@ -21,8 +22,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
+  const guides: MetadataRoute.Sitemap = GUIDES.map((g) => ({
+    url: `${BASE}/guides/${g.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   return [
     { url: BASE, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${BASE}/guides`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${BASE}/#amenities`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/#faq`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/#locations`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
@@ -37,5 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...cityHubs,
     // ── Generated housing-type × city spokes ──────────────────────────────
     ...spokes,
+    // ── Content guides ────────────────────────────────────────────────────
+    ...guides,
   ];
 }

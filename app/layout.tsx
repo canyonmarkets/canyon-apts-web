@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import SiteShell from '@/components/SiteShell';
+import { REVIEWS } from '@/lib/reviews';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
@@ -105,6 +106,20 @@ const jsonLd = {
           closes: '20:00',
         },
       ],
+      sameAs: [
+        'https://www.google.com/search?kgmid=/g/11npvbhw3x',
+        // Add when created: 'https://www.facebook.com/CanyonApartmentsAZ'
+        // Add when created: 'https://www.instagram.com/canyonapartments'
+      ],
+      ...(REVIEWS.enabled ? {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: REVIEWS.ratingValue,
+          reviewCount: REVIEWS.reviewCount,
+          bestRating: REVIEWS.bestRating,
+          worstRating: REVIEWS.worstRating,
+        },
+      } : {}),
       knowsAbout: [
         'Furnished Apartment Rentals',
         'Short-Term Housing Phoenix',

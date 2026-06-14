@@ -42,19 +42,13 @@
 - [ ] **Fix doubled-title bug** on the 5 flat Phoenix pages (their `metaTitle` includes "| Canyon Apartments" AND the layout template appends it → "...| Canyon Apartments | Canyon Apartments"). Strip the suffix from each page's `metadata.title`.
 - [ ] **Footer link columns** into the mesh (currently footer is anchor-nav only). Add columns: Housing Types (→ hubs), Cities (→ city hubs), so every page links the full mesh (crawl depth + internal PageRank).
 
-### P2 — the SEO edge (traffic + CTR levers)
-- [ ] **OpenGraph + Twitter Card images** per page (`opengraph-image`/`og:image`). Huge for **Facebook/Marketplace/Craigslist** link previews → more clicks on the posts Jeff already makes. Generate branded OG images (Next.js `ImageResponse` or static) with the page title + photo.
-- [ ] **`Organization`/`LocalBusiness` schema with `sameAs`** in layout (link FB, IG, GBP, directory profiles once URLs exist) — strengthens entity/brand signals.
-- [ ] **Review/`AggregateRating` schema** — wire it in now (reads from a small data file) so it lights up as soon as Google reviews land via Paige. Reviews are the #1 local-rank + conversion lever.
-- [ ] **Image SEO:** descriptive `alt` on all gallery/photo images (some are generic "Apartment interior" — make them specific), keep `next/image` optimization, meaningful filenames.
-- [ ] **Long-tail content hub (`/guides` or `/blog`)** — the biggest organic lever to replace FB ads. Write genuinely helpful articles for informational intent that paid ads can't cheaply capture, each internally linking to relevant spokes:
-  - "How traveling nurses find housing in Phoenix (and what to ask)"
-  - "Renting with an eviction in Arizona: what's actually possible"
-  - "No-credit-check apartments in Phoenix — how they work"
-  - "Furnished vs. unfurnished for a 3-month Phoenix stay"
-  - "Moving to Phoenix: where to land while you house-hunt"
-  - Add `Article` + `BreadcrumbList` schema; these rank for questions and feed the money pages.
-- [ ] **`furnished housing near [hospital]` micro-pages** (or anchored sections on travel-nurse spokes) for the top hospitals in `lib/hospitals.ts` — premium travel-nurse intent. Proximity only, no affiliation claims.
+### P2 — COMPLETE (commit 6e94ece, 2026-06-14)
+- [x] **OpenGraph + Twitter Card images** — `opengraph-image.tsx` on all 35 routes (homepage, 5 flat Phoenix pages, 25 spokes, 5 city hubs, guides index + 6 articles). Shared branded `OgCard` layout in `lib/og.tsx`; dark card with Canyon orange, per-page title, subtitle. Verified in production.
+- [x] **`sameAs` entity signal** — added to `ApartmentComplex` JSON-LD in `layout.tsx` with GBP Knowledge Graph ID `/g/11npvbhw3x`. Commented stubs for FB/IG when those pages are created.
+- [x] **`AggregateRating` schema scaffold** — `lib/reviews.ts` with `enabled: false`; schema block in layout reads it and omits the rating until flipped on (no fake-rating penalty). Activate when Paige delivers real reviews.
+- [x] **Image SEO** — all 24 `PhotoCarousel` photos now have descriptive, keyword-rich alt texts (location, room type, features) instead of generic "Furnished apartment interior".
+- [x] **Long-tail content hub (`/guides`)** — 6 full articles live at `/guides/[slug]`, each with `Article` + `BreadcrumbList` JSON-LD and internal links to money pages. All 6 in sitemap.xml at priority 0.8. Articles: traveling nurse housing, renting with eviction, no-credit-check how it works, furnished vs unfurnished, moving to Phoenix, extended-stay hotels vs apartments.
+- [x] **Hospital micro-content** — prose paragraph added to travel-nurse spoke pages below the chip list, weaving all city hospital names into a natural sentence for keyword density and crawlability.
 
 ### P3 — measurement + off-site (so you can prove it's working before cutting ads)
 - [ ] **Google Search Console:** verify domain, submit `sitemap.xml`, watch indexation of the 25+ new pages.

@@ -112,7 +112,7 @@ const jsonLd = {
       ],
       sameAs: [
         'https://www.google.com/search?kgmid=/g/11npvbhw3x',
-        // Add when created: 'https://www.facebook.com/CanyonApartmentsAZ'
+        'https://www.facebook.com/canyonpropertiesaz',
         // Add when created: 'https://www.instagram.com/canyonapartments'
       ],
       ...(REVIEWS.enabled ? {

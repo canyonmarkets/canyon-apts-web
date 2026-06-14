@@ -1,70 +1,81 @@
-# Canyon Apartments (canyon-apts.com) — Handoff for SEO Local-Presence Build
+# Canyon Apartments (canyon-apts.com) — SEO Build: Current State + Execution Plan
 
-**Created:** 2026-06-14 · **Purpose:** Resume in a fresh thread. Two jobs: (A) the mobile-display scare, (B) build the local-SEO landing-page mesh like we did for canyon-markets.com.
-
----
-
-## A. The "messed-up mobile page" — DIAGNOSED: not a real site problem
-
-Jeff signed up with **Merchynt / "Paige"** (an AI agent for Google Business Profile / Maps local SEO). On his **phone** the site looked broken — "little blog posts on the page," hero video "all screwed up" — but it looks **fine on desktop**.
-
-**What I checked (2026-06-14):**
-- `git log` — newest commit is the leads page. **No commits from Merchynt/Paige.** The SEO tool did not touch the repo.
-- Grepped the whole project — **no injected `<script>`, widget, embed, gtag, or "merchynt/paige" anywhere.** The only `<script>` is our own JSON-LD (`app/layout.tsx:301`).
-- **No blog/article pages exist** in the codebase (`app/` has only the home + 5 keyword landing pages + /leads + /api).
-- Fetched the **live homepage with an iPhone user-agent**: `200 OK`, hero `<video>` present, correct title, **zero blog/article content, zero merchynt/paige strings.**
-
-**Verdict:** The real website served to phones is clean — other visitors are **not** seeing a mess. The "blog posts" Jeff saw are almost certainly **Paige's Google Business Profile posts** (GBP posts render as little cards and, on a phone Google search, sit right under the business name — easy to mistake for "my website"). The broken hero is most likely **his phone's browser cache** showing a stale/half-loaded paint.
-
-**Tell Jeff:** hard-refresh / clear cache on the phone, or open canyon-apts.com in a private/incognito tab on the phone — it'll look correct. Confirm whether what he saw was actually the **Google listing** (maps.google / the business panel), not the site.
-
-**One genuine, small improvement to make (next thread):** `components/Hero.tsx` `<video>` has **no `poster` image**. On a slow phone connection the hero can show black until the MP4 loads. Add a `poster="/hero-poster.jpg"` fallback (export a frame of HeroVideo.mp4). Also consider it doesn't `preload` a poster. This is polish, not the reported bug.
-
-**To fully close the loop:** this environment couldn't render external URLs in a real mobile browser (only fetch HTML). In the next thread, load canyon-apts.com in a mobile viewport (Chrome devtools / preview tool that allows the domain) and eyeball the hero + sections to be 100% sure no CSS-only mobile glitch exists.
+**Updated 2026-06-14 by Opus.** This replaces the original pre-build plan. It's written so a **fresh Sonnet thread** can execute it cold. Goal in Jeff's words: **maximize organic search traffic and conversion so he can throttle down paid Facebook ads.** Currently advertising via Facebook (paid), Facebook Marketplace, and Craigslist.
 
 ---
 
-## B. Current state of canyon-apts.com
-
-- **Stack:** Next.js (App Router) + React + TypeScript + Tailwind, Netlify auto-deploy from `github.com/canyonmarkets/canyon-apts-web` (main). Light/white brand theme (`brand-*` orange on white, `iron-900` hero) — **different from the dark markets site. Keep this theme; this is an SEO build, not a redesign.**
-- **Components:** Hero (bg video), Amenities, BookCallButton (Calendly), CTABanner, FAQ, Footer, HowItWorks, Locations, Navbar, PhotoCarousel (24 photos), PricingBanner, SiteShell, TheDifference, WhoWeHelp.
-- **Existing pages (5 keyword landing pages):** `/furnished-apartments-phoenix`, `/no-credit-check-apartments-phoenix`, `/weekly-rentals-phoenix`, `/traveling-nurse-housing-phoenix`, `/corporate-housing-phoenix`. Plus `/leads` (Joleen's prospect tracker) and `/api/leads-notify`.
-- **Schema already present:** ApartmentComplex + FAQPage + geo meta (commit 913eb9e). Verify in next thread.
-- **`SEO-CHECKLIST.md` already exists** — covers OFF-site work: Netlify/DNS, Search Console, **Google Business Profile (Paige now handles this)**, GA4, directories (Furnished Finder, Craigslist, Zillow, CHBO, etc.), social, reviews. Don't duplicate it — this handoff is the ON-site landing-page build that complements it.
-- Contact/booking: Calendly + pre-screening modal. Leads also via `/api/leads-notify` (check Resend key usage).
-
----
-
-## C. The build — local-SEO landing-page mesh (mirror canyon-markets.com)
-
-Reference the markets template: `../canyon-markets-web/SEO-BUILD-PLAN.md` (industry × city pages). For apartments the analog is **housing-type × city** (and optionally a traveling-nurse × hospital sub-play, which is very high-intent).
-
-**Proposed matrix (confirm with Jeff):**
-- **Housing types** (the existing 5 keyword pages become the "hubs"): Furnished Apartments · No-Credit-Check Apartments · Weekly Rentals · Traveling-Nurse Housing · Corporate Housing. (Maybe add: Monthly/Extended-Stay.)
-- **Cities (service area):** Phoenix, Tempe, Mesa, Gilbert, Chandler (+ Scottsdale? Glendale? confirm). Hero currently lists Phoenix · Tempe · Mesa · Gilbert · Chandler.
-- **Pages:** `/[housing-type]/[city]` spokes = 5 × ~5–6 = ~25–30 unique pages, each with city-specific copy + FAQ + schema, cross-linked to siblings + hubs. Mirror the markets structure (generateStaticParams, generateMetadata, Service/Breadcrumb/FAQPage JSON-LD, programmatic sitemap, footer link columns).
-- **High-value extra:** Traveling-Nurse Housing × major Phoenix hospitals (Banner, Mayo Clinic AZ, HonorHealth, Phoenix Children's, Dignity/St. Joseph's, VA) — "furnished housing near [hospital]" is premium traveling-nurse search intent. (Reference hospitals as proximity context, not affiliations.)
-- Build `lib/site.ts` / `lib/housingTypes.ts` / `lib/cities.ts` data files like markets.
-
-**Merchynt/Paige coordination:** Paige manages the **Google Business Profile** (off-site posts, Maps). It does **not** edit the website. The two are complementary — our on-site landing pages + their GBP work reinforce each other. Make sure the **NAP (name/address/phone) is identical** everywhere: "Canyon Apartments" / service-area (no public address) / (602) 935-6830. Don't let any Paige-generated "website" or microsite compete with canyon-apts.com for the brand term — confirm Paige is pointing at canyon-apts.com.
+## 0. How to use this doc (Sonnet, read first)
+- The **architecture is already built** — follow the existing patterns, don't re-invent them. Concrete examples to copy: `lib/*.ts` (data), `app/[housingType]/[city]/page.tsx` (dynamic route + JSON-LD + metadata), `app/sitemap.ts`.
+- Work in **`C:\Users\jeffm\Documents\CLAUDE\VENDING\canyon-apts-web`**. Stack: Next.js 16 (App Router) + React + TS + Tailwind v4. Netlify auto-deploys `main`.
+- **Always `npm run build` before pushing** (catches TS errors; confirms all routes prerender). The dev server throws a harmless PhotoCarousel hydration warning — **ignore it; production build is clean.**
+- **Keep the light/white brand theme.** Reuse the polish components: `Reveal`, `TiltCard`, `CountUp`/`StatBar`, `Marquee`, `SectionDivider`, `PageChrome`, plus CSS classes `btn-shine` / `nav-link` / `text-gradient-animate` in `app/globals.css`. All motion is `prefers-reduced-motion`-gated.
+- **NAP must stay identical everywhere** (matches Paige/GBP): name **Canyon Apartments** · **(602) 935-6830** · service-area (no public address) · email `info@canyon-markets.com`. Source of truth: `lib/site.ts`.
+- **If tempted to change URL structure or canonical strategy, STOP and ask Jeff.** That's the one architectural fork left.
 
 ---
 
-## D. Info to get from Jeff before building (next thread)
-1. **Final housing types + cities** for the matrix (confirm/trim the proposed list; add Scottsdale/Glendale?).
-2. **Traveling-nurse hospital pages** — yes/no, and which hospitals.
-3. **Publishable credibility numbers** (like markets: e.g., "since 20XX," # of units, # of residents housed, years in business) for trust + schema.
-4. **Real per-city/neighborhood context** he can speak to (which areas the units are actually in) — for non-thin local copy.
-5. Confirm **service-area, no public address** (same as markets) for schema/GBP NAP consistency.
-6. Any **real amenities/policies** to feature per type (e.g., no-credit-check specifics, weekly pricing, what's included).
+## 1. DONE (live on main)
+- **Premium visual/motion layer** across homepage (commit c62b890) + switched hero to the lighter 2nd video.
+- **SEO mesh v1** (commit a5bb9fc):
+  - `lib/site.ts` (NAP, brand story, real stats), `lib/cities.ts` (6 cities), `lib/housingTypes.ts` (5 hubs), `lib/hospitals.ts` (by city).
+  - `app/[housingType]/[city]/page.tsx` → **25 static spokes** (5 types × 5 non-Phoenix cities), `dynamicParams=false` (off-list cities 404). Per-page title/canonical, **Service + BreadcrumbList JSON-LD**, hospital list on travel-nurse pages, internal-link mesh.
+  - Spokes added to `sitemap.xml`. Build = 38 routes, verified.
+- **Existing 5 flat Phoenix pages** = the type hubs: `/furnished-apartments-phoenix`, `/no-credit-check-apartments-phoenix`, `/weekly-rentals-phoenix`, `/traveling-nurse-housing-phoenix`, `/corporate-housing-phoenix`.
+- Existing schema in `app/layout.tsx` (ApartmentComplex + FAQPage + geo). Title template is `%s | Canyon Apartments`.
 
-## E. Checklist (next thread)
-- [ ] Visually verify mobile in a real mobile viewport; add hero `poster` fallback
-- [ ] Confirm matrix (types × cities) with Jeff + gather Part D info
-- [ ] `lib/` data files (site, housingTypes, cities)
-- [ ] Convert the 5 keyword pages into hubs; build `/[type]/[city]` spokes
-- [ ] (Optional) traveling-nurse × hospital pages
-- [ ] Service/Breadcrumb/FAQPage JSON-LD helpers + per-page metadata/canonicals
-- [ ] Programmatic sitemap + internal-link mesh + footer columns
-- [ ] `next build` verify → push (Netlify auto-deploys main) → spot-check live
-- [ ] Cross-check NAP consistency with Paige/GBP
+---
+
+## 2. Business context (use for authentic, non-thin copy)
+- **Origin story (real):** Started as an **Airbnb operation in 2017**; thousands of stays pre-COVID. In 2020 Airbnb canceled their entire **March–April** season (AZ's peak), so they pulled every listing and rebuilt around **direct weekly/monthly furnished rentals** — more stability for residents, full control for them. ("COVID was a blessing.") See `BRAND_STORY` in `lib/site.ts`.
+- **Traveling nurses are a core pillar:** ~75% of COVID-era guests; the reason for the pivot. The travel-nurse × hospital angle is the **highest-intent** play — lean into it.
+- **Real stats (defensible):** 4,000+ guests hosted, 9+ years, 5 cities served, $495 starting weekly rate.
+- **Decisions locked:** Cities = Phoenix, Tempe, Mesa, Gilbert, Chandler (live) + **Scottsdale (coming soon, build the pages now)**. **No West Valley** (Glendale/Peoria/etc. — too far to service). Local copy stays **general** (Phoenix metro = one big connected suburb, no distinct neighborhoods) — lean on freeways + nearby employers/hospitals, not invented neighborhood detail.
+
+---
+
+## 3. Remaining build — prioritized checklist
+
+### P1 — finish the mesh + indexability (do first)
+- [ ] **FAQ on every spoke + `FAQPage` JSON-LD.** Reuse homepage `FAQ` content, lightly city/type-flavored (3–5 Qs each). FAQ rich-results are a big SERP-real-estate + CTR win. Add the JSON-LD to the spoke's `@graph`.
+- [ ] **City hub pages** `app/[city]/page.tsx` (CONFIRMED wanted): one page per city listing **all 5 housing types** for that city, with city blurb, hospital list, internal links to the 5 spokes + the Phoenix hubs, FAQ, and `CollectionPage`/`BreadcrumbList` JSON-LD. Targets "[city] furnished apartments / corporate housing" and funnels to spokes. **Watch collision:** city slugs (`tempe`,`mesa`,…) must not clash with the `[housingType]` segment — they won't (different values), but verify build. Add to sitemap + `generateStaticParams` with `dynamicParams=false`.
+- [ ] **Enrich spoke body copy** so pages aren't thin/duplicate (Google may drop near-duplicate programmatic pages). Each page should have meaningful unique prose: weave `BRAND_STORY`, the city `anchors`, type-specific detail, and a short "why this city" paragraph. Aim ~400+ words of genuinely useful copy per page.
+- [ ] **Fix doubled-title bug** on the 5 flat Phoenix pages (their `metaTitle` includes "| Canyon Apartments" AND the layout template appends it → "...| Canyon Apartments | Canyon Apartments"). Strip the suffix from each page's `metadata.title`.
+- [ ] **Footer link columns** into the mesh (currently footer is anchor-nav only). Add columns: Housing Types (→ hubs), Cities (→ city hubs), so every page links the full mesh (crawl depth + internal PageRank).
+
+### P2 — the SEO edge (traffic + CTR levers)
+- [ ] **OpenGraph + Twitter Card images** per page (`opengraph-image`/`og:image`). Huge for **Facebook/Marketplace/Craigslist** link previews → more clicks on the posts Jeff already makes. Generate branded OG images (Next.js `ImageResponse` or static) with the page title + photo.
+- [ ] **`Organization`/`LocalBusiness` schema with `sameAs`** in layout (link FB, IG, GBP, directory profiles once URLs exist) — strengthens entity/brand signals.
+- [ ] **Review/`AggregateRating` schema** — wire it in now (reads from a small data file) so it lights up as soon as Google reviews land via Paige. Reviews are the #1 local-rank + conversion lever.
+- [ ] **Image SEO:** descriptive `alt` on all gallery/photo images (some are generic "Apartment interior" — make them specific), keep `next/image` optimization, meaningful filenames.
+- [ ] **Long-tail content hub (`/guides` or `/blog`)** — the biggest organic lever to replace FB ads. Write genuinely helpful articles for informational intent that paid ads can't cheaply capture, each internally linking to relevant spokes:
+  - "How traveling nurses find housing in Phoenix (and what to ask)"
+  - "Renting with an eviction in Arizona: what's actually possible"
+  - "No-credit-check apartments in Phoenix — how they work"
+  - "Furnished vs. unfurnished for a 3-month Phoenix stay"
+  - "Moving to Phoenix: where to land while you house-hunt"
+  - Add `Article` + `BreadcrumbList` schema; these rank for questions and feed the money pages.
+- [ ] **`furnished housing near [hospital]` micro-pages** (or anchored sections on travel-nurse spokes) for the top hospitals in `lib/hospitals.ts` — premium travel-nurse intent. Proximity only, no affiliation claims.
+
+### P3 — measurement + off-site (so you can prove it's working before cutting ads)
+- [ ] **Google Search Console:** verify domain, submit `sitemap.xml`, watch indexation of the 25+ new pages.
+- [ ] **GA4 + conversion events:** track `tel:` clicks, "Book a Call" clicks, inventory-link clicks, lead-form submits. You need this to know organic is replacing ad-driven leads **before** you throttle Facebook.
+- [ ] **GBP alignment (Paige):** confirm Paige points at canyon-apts.com (not a competing microsite), NAP matches `lib/site.ts`, and embed/link the GBP. Add a GBP map embed + reviews section on the homepage/contact.
+- [ ] **Directory/citation NAP consistency:** Furnished Finder (critical for nurses), Apartments.com, Zillow/Hotpads, CHBO, Yelp, Bing Places, Nextdoor — identical NAP (see `SEO-CHECKLIST.md`). These feed the map pack and send referral traffic.
+
+---
+
+## 4. Conversion (CRO) — turn the new traffic into bookings
+- Already live: above-fold CTA, **click-to-call** `(602) 935-6830`, sticky mobile CTA, pre-screening modal → Calendly, trust stat bar, fast load.
+- [ ] **Lead form on spokes/hubs** (not just Calendly) — capture visitors who won't book a call yet. `/api/leads-notify` exists; **confirm `RESEND_API_KEY` is set on Netlify** (it was flagged missing for the follow-up app — verify here too).
+- [ ] **Social proof on money pages:** pull 2–3 real Google reviews onto spokes/hubs once available.
+- [ ] **Mobile pass:** verify every new page on a real mobile viewport (most local + Craigslist/FB traffic is mobile). Check hero, CTAs, tap targets.
+- [ ] Keep **Core Web Vitals** green (it's an organic ranking factor): the lighter video + poster + zero-dep animations already help — don't regress by adding heavy libs.
+
+---
+
+## 5. Guardrails
+- One Netlify deploy per logical task (batch changes, build locally, then push) — don't deploy per file.
+- Don't fabricate claims (reviews, ratings, "X residents" beyond the defensible 4,000+). Proximity to hospitals is context, never affiliation.
+- Reference docs: `SEO-CHECKLIST.md` (off-site checklist), this file (on-site build), and the `canyon-apts-seo` memory note.
+
+**Suggested order for the next thread:** P1 (FAQ schema → city hubs → enrich copy → title fix → footer) → build/verify/push → P2 (OG images → review schema → guides) → P3 (GSC/GA4/GBP) → only then start dialing back Facebook spend as GSC/GA4 show organic leads ramping.

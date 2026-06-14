@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import BookCallButton from '@/components/BookCallButton';
-import { CheckCircle, Phone, Mail } from 'lucide-react';
+import { CheckCircle, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Corporate Housing Phoenix AZ | Furnished Monthly Rentals',
@@ -29,9 +29,6 @@ export default function CorporateHousingPage() {
               label="Check Corporate Availability"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-700 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/40"
             />
-            <a href="tel:+16029356830" className="inline-flex items-center justify-center gap-2 rounded-lg border border-stone-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:border-brand-500 transition-colors duration-200">
-              <Phone size={16} strokeWidth={1.5} />(602) 935-6830
-            </a>
           </div>
         </div>
       </section>
@@ -101,13 +98,12 @@ export default function CorporateHousingPage() {
           <h2 className="font-display font-bold text-2xl sm:text-4xl uppercase tracking-wide text-white">
             Need Corporate Housing in Phoenix?
           </h2>
-          <p className="text-brand-100 text-sm leading-relaxed">Call or book a quick conversation. We&apos;ll match your employee with a furnished Phoenix apartment that&apos;s ready when they are.</p>
+          <p className="text-brand-100 text-sm leading-relaxed">Book a quick 15-minute call. We&apos;ll match your employee with a furnished Phoenix apartment that&apos;s ready when they are.</p>
           <div className="flex justify-center">
             <BookCallButton label="Talk to Us Today" className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-sm font-semibold text-brand-800 uppercase tracking-wide hover:bg-brand-50 transition-colors duration-200" />
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href="mailto:info@canyon-markets.com" className="inline-flex items-center gap-2 text-sm text-brand-200 hover:text-white transition-colors"><Mail size={14} strokeWidth={1.5} />info@canyon-markets.com</a>
-            <a href="tel:+16029356830" className="inline-flex items-center gap-2 text-sm text-brand-200 hover:text-white transition-colors"><Phone size={14} strokeWidth={1.5} />(602) 935-6830</a>
           </div>
         </div>
       </section>

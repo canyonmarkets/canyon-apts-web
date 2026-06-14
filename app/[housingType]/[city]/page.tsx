@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { CheckCircle, Phone, MapPin, ChevronDown } from 'lucide-react';
+import { CheckCircle, MapPin, ChevronDown } from 'lucide-react';
 import BookCallButton from '@/components/BookCallButton';
 import Reveal from '@/components/Reveal';
 import { SITE } from '@/lib/site';
@@ -104,9 +104,6 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
               label="Check Availability"
               className="btn-shine inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-700 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/40"
             />
-            <a href={SITE.phoneHref} className="inline-flex items-center justify-center gap-2 rounded-lg border border-stone-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:border-brand-500 transition-colors duration-200">
-              <Phone size={16} strokeWidth={1.5} />{SITE.phone}
-            </a>
           </div>
         </Reveal>
       </section>
@@ -243,7 +240,6 @@ export default async function SpokePage({ params }: { params: Promise<Params> })
           <div className="flex justify-center">
             <BookCallButton label="Book a Free 15-Min Call" className="btn-shine inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-sm font-semibold text-brand-800 uppercase tracking-wide hover:bg-brand-50 transition-colors duration-200" />
           </div>
-          <a href={SITE.phoneHref} className="inline-flex items-center gap-2 justify-center text-sm text-brand-200 hover:text-white transition-colors"><Phone size={14} strokeWidth={1.5} />{SITE.phone}</a>
         </div>
       </section>
     </div>

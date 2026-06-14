@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import BookCallButton from '@/components/BookCallButton';
-import { CheckCircle, Phone, Mail } from 'lucide-react';
+import { CheckCircle, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Furnished Apartments Phoenix AZ | Weekly & Monthly',
@@ -43,13 +43,6 @@ export default function FurnishedApartmentsPage() {
               label="Check Availability"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-700 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/40"
             />
-            <a
-              href="tel:+16029356830"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-stone-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:border-brand-500 transition-colors duration-200"
-            >
-              <Phone size={16} strokeWidth={1.5} />
-              (602) 935-6830
-            </a>
           </div>
         </div>
       </section>
@@ -146,10 +139,6 @@ export default function FurnishedApartmentsPage() {
             <a href="mailto:info@canyon-markets.com" className="inline-flex items-center gap-2 text-sm text-brand-200 hover:text-white transition-colors">
               <Mail size={14} strokeWidth={1.5} />
               info@canyon-markets.com
-            </a>
-            <a href="tel:+16029356830" className="inline-flex items-center gap-2 text-sm text-brand-200 hover:text-white transition-colors">
-              <Phone size={14} strokeWidth={1.5} />
-              (602) 935-6830
             </a>
           </div>
         </div>

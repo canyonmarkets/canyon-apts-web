@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import Reveal from '@/components/Reveal';
 
 const FAQS = [
   {
@@ -45,7 +46,7 @@ export default function FAQ() {
     <section id="faq" className="bg-iron-800 px-6 py-24">
       <div className="max-w-3xl mx-auto">
 
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <p className="text-brand-500 font-mono text-base tracking-[0.3em] uppercase mb-4">
             FAQ
           </p>
@@ -55,27 +56,31 @@ export default function FAQ() {
           <p className="mt-5 text-white text-base leading-relaxed max-w-lg mx-auto">
             Still wondering about something? Book a free call and ask us directly.
           </p>
-        </div>
+        </Reveal>
 
         <div className="flex flex-col gap-3">
           {FAQS.map(({ q, a }, i) => (
-            <div key={i}
-              className="rounded-xl border border-white/10 bg-white/5 overflow-hidden transition-all duration-200">
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                className="group w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/5 transition-colors duration-200">
-                <span className="font-display font-bold text-lg uppercase tracking-wide text-white group-hover:text-brand-500 transition-colors duration-200 leading-snug">
-                  {q}
-                </span>
-                <ChevronDown
-                  size={20} strokeWidth={2}
-                  className={`flex-shrink-0 text-brand-500 transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`}
-                />
-              </button>
-              <div className={`overflow-hidden transition-all duration-300 ${open === i ? 'max-h-96' : 'max-h-0'}`}>
-                <p className="px-6 pb-6 text-white text-sm leading-relaxed">{a}</p>
+            <Reveal key={i} delay={(i % 4) * 60}>
+              <div
+                className={`rounded-xl border bg-white/5 overflow-hidden transition-colors duration-300 ${open === i ? 'border-brand-500/50' : 'border-white/10'}`}>
+                <button
+                  onClick={() => setOpen(open === i ? null : i)}
+                  className="group w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/5 transition-colors duration-200">
+                  <span className={`font-display font-bold text-lg uppercase tracking-wide transition-colors duration-200 leading-snug ${open === i ? 'text-brand-500' : 'text-white group-hover:text-brand-500'}`}>
+                    {q}
+                  </span>
+                  <ChevronDown
+                    size={20} strokeWidth={2}
+                    className={`flex-shrink-0 text-brand-500 transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                <div className={`grid transition-all duration-300 ease-out ${open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                  <div className="overflow-hidden">
+                    <p className="px-6 pb-6 text-white text-sm leading-relaxed">{a}</p>
+                  </div>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 

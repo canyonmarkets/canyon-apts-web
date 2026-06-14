@@ -1,4 +1,6 @@
 import { Shield, UtensilsCrossed, WashingMachine, Zap, Car, Waves, Sofa, MapPin } from 'lucide-react';
+import Reveal from '@/components/Reveal';
+import TiltCard from '@/components/TiltCard';
 
 const AMENITIES = [
   {
@@ -48,7 +50,7 @@ export default function Amenities() {
     <section id="amenities" className="bg-white px-6 py-24">
       <div className="max-w-6xl mx-auto">
 
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <p className="text-brand-600 font-mono text-base tracking-[0.3em] uppercase mb-4">
             Everything Included
           </p>
@@ -59,22 +61,24 @@ export default function Amenities() {
             Every Canyon Apts unit is set up so you can walk in and start living immediately —
             no setup, no shopping, no surprises.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {AMENITIES.map(({ icon: Icon, title, body }) => (
-            <div key={title}
-              className="group flex flex-col gap-4 rounded-2xl border border-stone-200 bg-stone-50 p-6 transition-all duration-300 hover:border-brand-300 hover:bg-white hover:shadow-lg hover:shadow-brand-500/5 hover:-translate-y-1">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600 group-hover:bg-brand-100 transition-colors duration-300">
-                <Icon size={22} strokeWidth={1.5} />
-              </div>
-              <div>
-                <h3 className="font-display font-bold text-lg uppercase tracking-wide text-stone-900 mb-1.5">
-                  {title}
-                </h3>
-                <p className="text-sm leading-relaxed text-stone-900">{body}</p>
-              </div>
-            </div>
+          {AMENITIES.map(({ icon: Icon, title, body }, i) => (
+            <Reveal key={title} delay={(i % 4) * 80} className="h-full">
+              <TiltCard
+                className="group h-full flex flex-col gap-4 rounded-2xl border border-stone-200 bg-stone-50 p-6 transition-colors duration-300 hover:border-brand-300 hover:bg-white hover:shadow-lg hover:shadow-brand-500/5">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600 group-hover:bg-brand-100 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
+                  <Icon size={22} strokeWidth={1.5} />
+                </div>
+                <div>
+                  <h3 className="font-display font-bold text-lg uppercase tracking-wide text-stone-900 mb-1.5">
+                    {title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-stone-900">{body}</p>
+                </div>
+              </TiltCard>
+            </Reveal>
           ))}
         </div>
 

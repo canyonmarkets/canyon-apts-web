@@ -1,4 +1,5 @@
 import BookCallButton from '@/components/BookCallButton';
+import Reveal from '@/components/Reveal';
 
 const INVENTORY = 'https://docs.google.com/document/d/1WzosuTy5dRP1OoL5GROj5aP8jsY132h6Vmd9cVLiccw/edit?pli=1&tab=t.0';
 
@@ -22,10 +23,19 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="bg-iron-800 px-6 py-24">
-      <div className="max-w-6xl mx-auto">
+    <section id="how-it-works" className="relative bg-iron-800 px-6 py-24 overflow-hidden">
+      {/* Subtle dot-grid texture */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        aria-hidden="true"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)',
+          backgroundSize: '22px 22px',
+        }}
+      />
+      <div className="relative max-w-6xl mx-auto">
 
-        <div className="text-center mb-20">
+        <Reveal className="text-center mb-20">
           <p className="text-brand-500 font-mono text-base tracking-[0.3em] uppercase mb-4">
             The Process
           </p>
@@ -36,21 +46,23 @@ export default function HowItWorks() {
             From first look to move-in day — can be done same day.
           </p>
           <div className="mt-8 h-px bg-gradient-to-r from-transparent via-brand-500/50 to-transparent" />
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
-          {STEPS.map(({ step, title, body }) => (
-            <div key={step} className="bg-iron-800 p-10 flex flex-col gap-6 hover:bg-iron-700 transition-colors duration-300">
-              <span className="font-mono text-7xl font-bold leading-none text-brand-500/20 select-none">
-                {step}
-              </span>
-              <div>
-                <h3 className="font-display font-bold text-2xl uppercase tracking-wide text-white mb-3">
-                  {title}
-                </h3>
-                <p className="text-white text-sm leading-relaxed">{body}</p>
+          {STEPS.map(({ step, title, body }, i) => (
+            <Reveal key={step} delay={i * 110}>
+              <div className="group h-full bg-iron-800 p-10 flex flex-col gap-6 hover:bg-iron-700 transition-colors duration-300">
+                <span className="font-mono text-7xl font-bold leading-none text-brand-500/20 select-none transition-all duration-300 group-hover:text-brand-500/70 group-hover:-translate-y-1">
+                  {step}
+                </span>
+                <div className="transition-transform duration-300 group-hover:translate-x-1">
+                  <h3 className="font-display font-bold text-2xl uppercase tracking-wide text-white mb-3">
+                    {title}
+                  </h3>
+                  <p className="text-white text-sm leading-relaxed">{body}</p>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
@@ -61,7 +73,7 @@ export default function HowItWorks() {
           </a>
           <BookCallButton
             label="Book a Free 15-Min Call"
-            className="inline-flex items-center justify-center rounded-lg bg-brand-500 px-8 py-3.5 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/40 active:scale-[0.97] transition-all duration-200"
+            className="btn-shine inline-flex items-center justify-center rounded-lg bg-brand-500 px-8 py-3.5 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/40 active:scale-[0.97] transition-all duration-200"
           />
         </div>
 

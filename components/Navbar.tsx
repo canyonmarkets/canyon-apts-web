@@ -49,13 +49,13 @@ export default function Navbar() {
           {NAV_LINKS.map(({ label, href }) => (
             <a key={href} href={href}
               onClick={(e) => { e.preventDefault(); handleLink(href); }}
-              className="text-sm font-medium text-stone-600 hover:text-brand-600 transition-colors duration-200">
+              className="nav-link text-sm font-medium text-stone-600 hover:text-brand-600 transition-colors duration-200">
               {label}
             </a>
           ))}
           <BookCallButton
             label="Book a Call"
-            className="ml-2 rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/30 active:scale-[0.97] transition-all duration-200"
+            className="btn-shine ml-2 rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/30 active:scale-[0.97] transition-all duration-200"
           />
         </nav>
 

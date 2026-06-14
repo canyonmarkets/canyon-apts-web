@@ -1,5 +1,6 @@
 import { MapPin } from 'lucide-react';
 import BookCallButton from '@/components/BookCallButton';
+import Reveal from '@/components/Reveal';
 
 const NAV_LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
@@ -15,13 +16,15 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-stone-900 border-t border-stone-700">
+    <footer className="relative bg-stone-900 border-t border-stone-700">
+      {/* Top accent glow */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-500/60 to-transparent" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-stone-700">
+        <Reveal className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-stone-700">
 
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <span className="font-display font-bold text-2xl tracking-widest uppercase text-stone-100">
+            <span className="font-display font-bold text-2xl tracking-widest uppercase text-gradient-animate">
               Canyon Apartments
             </span>
             <p className="text-xs leading-relaxed text-stone-400 max-w-xs">
@@ -36,7 +39,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-2.5">
               {NAV_LINKS.map(({ label, href }) => (
                 <li key={href}>
-                  <a href={href} className="text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
+                  <a href={href} className="nav-link inline-block text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
                     {label}
                   </a>
                 </li>
@@ -56,7 +59,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href={INVENTORY} target="_blank" rel="noopener noreferrer"
-                  className="text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
+                  className="nav-link inline-block text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
                   View Inventory & Rates
                 </a>
               </li>
@@ -77,7 +80,7 @@ export default function Footer() {
             </div>
           </div>
 
-        </div>
+        </Reveal>
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-stone-600">&copy; {year} Canyon Apartments. All rights reserved.</p>

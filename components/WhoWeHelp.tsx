@@ -1,5 +1,7 @@
 import { Stethoscope, CreditCard, Truck, Briefcase, Clock, Scale } from 'lucide-react';
 import BookCallButton from '@/components/BookCallButton';
+import Reveal from '@/components/Reveal';
+import TiltCard from '@/components/TiltCard';
 
 const SEGMENTS = [
   {
@@ -48,10 +50,12 @@ const SEGMENTS = [
 
 export default function WhoWeHelp() {
   return (
-    <section id="who-we-help" className="bg-iron-300 px-6 py-24">
-      <div className="max-w-6xl mx-auto">
+    <section id="who-we-help" className="relative bg-gradient-to-b from-iron-200 to-iron-300 px-6 py-24 overflow-hidden">
+      {/* Soft brand glow behind the header */}
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-72 w-[42rem] max-w-full rounded-full bg-brand-500/10 blur-3xl" aria-hidden="true" />
+      <div className="relative max-w-6xl mx-auto">
 
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <p className="text-brand-600 font-mono text-base tracking-[0.3em] uppercase mb-4">
             Our Residents
           </p>
@@ -62,14 +66,15 @@ export default function WhoWeHelp() {
             We work with people the traditional rental market often turns away.
             If you need a furnished place to stay in the Phoenix area, chances are we can help.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {SEGMENTS.map(({ icon: Icon, label, headline, body, tags }) => (
-            <div key={label}
-              className="group flex flex-col gap-6 rounded-2xl border border-iron-200 bg-white p-8 hover:border-brand-400 hover:shadow-lg hover:shadow-brand-500/5 transition-all duration-300">
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-600 text-white group-hover:bg-brand-700 transition-colors duration-300">
+          {SEGMENTS.map(({ icon: Icon, label, headline, body, tags }, i) => (
+            <Reveal key={label} delay={(i % 2) * 100} className="h-full">
+              <TiltCard max={4}
+                className="group h-full flex flex-col gap-6 rounded-2xl border border-iron-200 bg-white p-8 hover:border-brand-400 hover:shadow-lg hover:shadow-brand-500/5 transition-colors duration-300">
+                <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-600 text-white group-hover:bg-brand-700 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
                   <Icon size={28} strokeWidth={1.5} />
                 </div>
                 <p className="font-mono text-xs tracking-[0.2em] uppercase text-brand-600 font-semibold">
@@ -82,19 +87,20 @@ export default function WhoWeHelp() {
                 </h3>
                 <p className="text-stone-900 text-sm leading-relaxed">{body}</p>
               </div>
-              <div className="flex flex-wrap gap-2 mt-auto pt-2">
-                {tags.map((tag) => (
-                  <span key={tag}
-                    className="px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 font-mono text-xs tracking-wide">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+                <div className="flex flex-wrap gap-2 mt-auto pt-2">
+                  {tags.map((tag) => (
+                    <span key={tag}
+                      className="px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 font-mono text-xs tracking-wide">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </TiltCard>
+            </Reveal>
           ))}
 
           {/* Wide CTA card */}
-          <div className="lg:col-span-2 rounded-2xl bg-brand-800 border border-brand-600 p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <Reveal className="lg:col-span-2 rounded-2xl bg-brand-800 border border-brand-600 p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="font-display font-bold text-2xl uppercase tracking-wide text-white mb-2">
                 Not Sure If You Qualify?
@@ -106,9 +112,9 @@ export default function WhoWeHelp() {
             </div>
             <BookCallButton
               label="Book a Free Call"
-              className="flex-shrink-0 rounded-lg bg-brand-500 px-8 py-3.5 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/40 active:scale-[0.97] transition-all duration-200"
+              className="btn-shine flex-shrink-0 rounded-lg bg-brand-500 px-8 py-3.5 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/40 active:scale-[0.97] transition-all duration-200"
             />
-          </div>
+          </Reveal>
         </div>
 
       </div>

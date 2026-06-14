@@ -1,4 +1,6 @@
 import { MapPin } from 'lucide-react';
+import Reveal from '@/components/Reveal';
+import TiltCard from '@/components/TiltCard';
 
 const LOCATIONS = [
   {
@@ -28,7 +30,7 @@ export default function Locations() {
     <section id="locations" className="bg-stone-50 px-6 py-24">
       <div className="max-w-6xl mx-auto">
 
-        <div className="text-center mb-16">
+        <Reveal className="text-center mb-16">
           <p className="text-brand-600 font-mono text-base tracking-[0.3em] uppercase mb-4">
             Service Area
           </p>
@@ -39,26 +41,28 @@ export default function Locations() {
             We maintain furnished units across five Phoenix metro communities.
             New locations are added regularly — ask about current availability on your call.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {LOCATIONS.map(({ city, description }) => (
-            <div key={city}
-              className="group flex flex-col gap-4 rounded-2xl border border-stone-200 bg-white p-7 hover:border-brand-300 hover:shadow-lg hover:shadow-brand-500/5 hover:-translate-y-1 transition-all duration-300">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 group-hover:bg-brand-100 transition-colors duration-300">
-                  <MapPin size={20} strokeWidth={1.5} />
+          {LOCATIONS.map(({ city, description }, i) => (
+            <Reveal key={city} delay={(i % 3) * 80} className="h-full">
+              <TiltCard
+                className="group h-full flex flex-col gap-4 rounded-2xl border border-stone-200 bg-white p-7 hover:border-brand-300 hover:shadow-lg hover:shadow-brand-500/5 transition-colors duration-300">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 group-hover:bg-brand-100 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
+                    <MapPin size={20} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-display font-bold text-2xl uppercase tracking-wide text-stone-900">
+                    {city}
+                  </h3>
                 </div>
-                <h3 className="font-display font-bold text-2xl uppercase tracking-wide text-stone-900">
-                  {city}
-                </h3>
-              </div>
-              <p className="text-stone-900 text-sm leading-relaxed">{description}</p>
-            </div>
+                <p className="text-stone-900 text-sm leading-relaxed">{description}</p>
+              </TiltCard>
+            </Reveal>
           ))}
 
           {/* Coming soon card */}
-          <div className="rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50 p-7 flex flex-col items-center justify-center text-center gap-3">
+          <Reveal delay={160} className="rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50 p-7 flex flex-col items-center justify-center text-center gap-3">
             <MapPin size={28} strokeWidth={1.5} className="text-stone-400" />
             <p className="font-display font-bold text-xl uppercase tracking-wide text-stone-400">
               More Coming Soon
@@ -66,7 +70,7 @@ export default function Locations() {
             <p className="text-stone-500 text-sm leading-relaxed">
               We are actively expanding. Ask about new locations on your call.
             </p>
-          </div>
+          </Reveal>
         </div>
 
       </div>

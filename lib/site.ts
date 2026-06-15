@@ -8,7 +8,7 @@ export const SITE = {
   baseUrl: 'https://canyon-apts.com',
   phone: '(623) 230-7020',
   phoneHref: 'tel:+16232307020',
-  email: 'info@canyon-markets.com',
+  email: 'properties@canyon-advisors.com',
   serviceArea: 'Phoenix Metro Area, AZ',
   /** Live inventory + rates (Google Doc). Single source of truth for the "View Inventory" CTA. */
   inventoryUrl:

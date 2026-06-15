@@ -30,7 +30,7 @@ const jsonLd = {
         'Canyon Apartments offers fully furnished short-term and extended-stay apartment rentals across the Phoenix metro area. No credit check, no rental history required. Weekly and monthly rates starting at $495/week. Utilities, parking, and furnishings all included.',
       url: 'https://canyon-apts.com',
       telephone: '+16232307020',
-      email: 'info@canyon-markets.com',
+      email: 'properties@canyon-advisors.com',
       logo: {
         '@type': 'ImageObject',
         url: 'https://canyon-apts.com/logo.png',

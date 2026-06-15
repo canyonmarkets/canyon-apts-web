@@ -9,7 +9,7 @@
 - Work in **`C:\Users\jeffm\Documents\CLAUDE\VENDING\canyon-apts-web`**. Stack: Next.js 16 (App Router) + React + TS + Tailwind v4. Netlify auto-deploys `main`.
 - **Always `npm run build` before pushing** (catches TS errors; confirms all routes prerender). The dev server throws a harmless PhotoCarousel hydration warning — **ignore it; production build is clean.**
 - **Keep the light/white brand theme.** Reuse the polish components: `Reveal`, `TiltCard`, `CountUp`/`StatBar`, `Marquee`, `SectionDivider`, `PageChrome`, plus CSS classes `btn-shine` / `nav-link` / `text-gradient-animate` in `app/globals.css`. All motion is `prefers-reduced-motion`-gated.
-- **NAP must stay identical everywhere** (matches Paige/GBP): name **Canyon Apartments** · **(623) 230-7020** · service-area (no public address) · email `info@canyon-markets.com`. Source of truth: `lib/site.ts`.
+- **NAP must stay identical everywhere** (matches Paige/GBP): name **Canyon Apartments** · **(623) 230-7020** · service-area (no public address) · email `properties@canyon-advisors.com`. Source of truth: `lib/site.ts`.
 - **If tempted to change URL structure or canonical strategy, STOP and ask Jeff.** That's the one architectural fork left.
 
 ---

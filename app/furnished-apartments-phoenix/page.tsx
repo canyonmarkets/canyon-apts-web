@@ -147,9 +147,9 @@ export default function FurnishedApartmentsPage() {
             />
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2">
-            <a href="mailto:info@canyon-markets.com" className="inline-flex items-center gap-2 text-sm text-brand-200 hover:text-white transition-colors">
+            <a href="mailto:properties@canyon-advisors.com" className="inline-flex items-center gap-2 text-sm text-brand-200 hover:text-white transition-colors">
               <Mail size={14} strokeWidth={1.5} />
-              info@canyon-markets.com
+              properties@canyon-advisors.com
             </a>
           </div>
         </div>

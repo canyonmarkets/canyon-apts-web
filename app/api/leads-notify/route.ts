@@ -19,8 +19,10 @@ export async function POST(req: Request) {
   ].filter(Boolean).join('\n');
 
   const { error } = await resend.emails.send({
-    from: 'Canyon Apartments <noreply@canyon-markets.com>',
-    to: 'info@canyon-markets.com',
+    // NOTE: the `from` domain (canyon-advisors.com) must be verified in Resend
+    // for delivery to work once RESEND_API_KEY is set.
+    from: 'Canyon Apartments <noreply@canyon-advisors.com>',
+    to: 'properties@canyon-advisors.com',
     subject: `New Follow-Up: ${name} — ${bedrooms}BR in ${city}`,
     text: lines,
   });

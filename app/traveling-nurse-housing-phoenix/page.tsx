@@ -115,7 +115,7 @@ export default function TravelingNursePage() {
             <BookCallButton label="Book a Free 15-Min Call" className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-sm font-semibold text-brand-800 uppercase tracking-wide hover:bg-brand-50 transition-colors duration-200" />
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="mailto:info@canyon-markets.com" className="inline-flex items-center gap-2 text-sm text-brand-200 hover:text-white transition-colors"><Mail size={14} strokeWidth={1.5} />info@canyon-markets.com</a>
+            <a href="mailto:properties@canyon-advisors.com" className="inline-flex items-center gap-2 text-sm text-brand-200 hover:text-white transition-colors"><Mail size={14} strokeWidth={1.5} />properties@canyon-advisors.com</a>
           </div>
         </div>
       </section>

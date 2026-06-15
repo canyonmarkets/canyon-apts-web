@@ -6,7 +6,11 @@ import SiteShell from '@/components/SiteShell';
 import { REVIEWS } from '@/lib/reviews';
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-const GSC_VERIFY = process.env.NEXT_PUBLIC_GSC_VERIFY;
+// A real Search Console token is a long alphanumeric string. A value beginning
+// with "G-" is a GA4 Measurement ID pasted into the wrong env var — ignore it so
+// we never emit an invalid google-site-verification meta tag.
+const RAW_GSC = process.env.NEXT_PUBLIC_GSC_VERIFY;
+const GSC_VERIFY = RAW_GSC && !RAW_GSC.startsWith('G-') ? RAW_GSC : undefined;
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });

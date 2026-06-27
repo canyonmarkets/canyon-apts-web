@@ -7,7 +7,7 @@ import PageChrome from './PageChrome';
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  if (pathname.startsWith('/leads')) {
+  if (pathname.startsWith('/leads') || pathname.startsWith('/book')) {
     return <>{children}</>;
   }
   return (

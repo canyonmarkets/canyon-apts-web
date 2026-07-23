@@ -11,6 +11,11 @@ import Locations from '@/components/Locations';
 import FAQ from '@/components/FAQ';
 import CTABanner from '@/components/CTABanner';
 import SectionDivider from '@/components/SectionDivider';
+import InventoryBanner from '@/components/InventoryBanner';
+import LiveInventoryTeaser from '@/components/LiveInventoryTeaser';
+
+// Revalidate every 5 minutes so the live-inventory teaser stays fresh.
+export const revalidate = 300;
 
 export default function Home() {
   return (
@@ -19,12 +24,14 @@ export default function Home() {
       <StatBar />
       <TheDifference />
       <PricingBanner />
+      <InventoryBanner />
       <WhoWeHelp />
       <Marquee />
       <Amenities />
       {/* white → dark gallery */}
       <SectionDivider fromClass="bg-white" toClass="text-iron-900" />
       <PhotoCarousel />
+      <LiveInventoryTeaser />
       <HowItWorks />
       {/* dark → light locations */}
       <SectionDivider fromClass="bg-iron-800" toClass="text-stone-50" flip />
@@ -32,8 +39,7 @@ export default function Home() {
       {/* light → dark FAQ */}
       <SectionDivider fromClass="bg-stone-50" toClass="text-iron-800" />
       <FAQ />
-      {/* dark → light CTA */}
-      <SectionDivider fromClass="bg-iron-800" toClass="text-iron-300" flip />
+      {/* FAQ and the CTA finale are both dark now — seamless run into the footer */}
       <CTABanner />
     </>
   );

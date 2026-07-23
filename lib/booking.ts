@@ -4,6 +4,11 @@ export const PIPELINE_STAGES = [
 ] as const;
 export const BOOKING_STATUSES = ['scheduled', 'completed', 'no_show', 'canceled'] as const;
 
+// The stages staff actually work with day to day. Toured/Applied, Leased, and Lost
+// stay valid in the DB (old data may carry them) but are hidden from the UI:
+// leased people are handled outside the app, and lost leads are simply gone.
+export const ACTIVE_PIPELINE_STAGES = ['new', 'called', 'photos_sent', 'following_up'] as const;
+
 export type LeadSource = typeof LEAD_SOURCES[number];
 export type PipelineStage = typeof PIPELINE_STAGES[number];
 export type BookingStatus = typeof BOOKING_STATUSES[number];

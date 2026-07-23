@@ -62,7 +62,7 @@ export default function FAQ() {
           {FAQS.map(({ q, a }, i) => (
             <Reveal key={i} delay={(i % 4) * 60}>
               <div
-                className={`rounded-xl border bg-white/5 overflow-hidden transition-colors duration-300 ${open === i ? 'border-brand-500/50' : 'border-white/10'}`}>
+                className={`rounded-xl border bg-white/5 overflow-hidden transition-all duration-300 ${open === i ? 'border-brand-500/50 shadow-[0_0_28px_rgba(201,75,12,0.14)]' : 'border-white/10'}`}>
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
                   className="group w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/5 transition-colors duration-200">

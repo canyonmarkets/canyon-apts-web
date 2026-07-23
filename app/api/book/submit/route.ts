@@ -3,7 +3,9 @@ import { supabaseAdmin } from '@/lib/supabase/admin';
 import { getOpenSlots } from '@/lib/availability';
 import { buildICS } from '@/lib/ics';
 import { sendEmail } from '@/lib/email/send';
+import { sendSMS } from '@/lib/sms';
 import { prospectConfirmationHTML, staffNewBookingHTML, errorAlertHTML } from '@/lib/email/templates';
+import { sendPushToStaff } from '@/lib/push';
 
 async function alertJeff(context: string, error: unknown) {
   const alertEmail = process.env.ERROR_ALERT_EMAIL;
@@ -19,9 +21,9 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const {
-      name, phone, email, party_size, desired_city, bedrooms, move_in_date,
+      name, phone, email, party_size, desired_city, bedrooms, move_in_date, pets,
       lead_source, utm_source, utm_medium, utm_campaign, referrer, heard_about,
-      screening_answers, slot_start, slot_end,
+      screening_answers, slot_start, slot_end, sms_opt_in,
     } = body;
 
     // Basic validation
@@ -57,12 +59,14 @@ export async function POST(req: Request) {
         desired_city: desired_city ?? null,
         bedrooms: Number(bedrooms),
         move_in_date: move_in_date?.trim() || null,
+        pets: pets?.trim() || null,
         lead_source: lead_source ?? 'other',
         utm_source: utm_source ?? null,
         utm_medium: utm_medium ?? null,
         utm_campaign: utm_campaign ?? null,
         referrer: referrer ?? null,
         heard_about: heard_about ?? null,
+        sms_opt_in: sms_opt_in === true,
         screening_answers: screening_answers ?? {},
       })
       .select()
@@ -123,16 +127,32 @@ export async function POST(req: Request) {
       attachments: [{ filename: 'canyon-apts-call.ics', content: Buffer.from(ics).toString('base64') }],
     });
 
+    // Pop a push on staff phones — the "somebody just grabbed the 11:45 slot" alert
+    await sendPushToStaff({
+      title: '📞 New booking',
+      body: `${name.trim()} — ${slotLabel}${desired_city ? ` · ${desired_city}` : ''}`,
+      url: `/staff/bookings/${booking.id}`,
+    }, 'bookings');
+
     // Send staff alert
     const staffResult = await sendEmail({
       to: process.env.STAFF_NOTIFY_EMAIL || 'properties@canyon-advisors.com',
       subject: `New Booking: ${name.trim()} — ${slotLabel}`,
       html: staffNewBookingHTML(
-        { name, phone, email, party_size, desired_city, bedrooms: Number(bedrooms), move_in_date, lead_source, heard_about },
+        { name, phone, email, party_size, desired_city, bedrooms: Number(bedrooms), move_in_date, pets, lead_source, heard_about },
         slotLabel,
         booking.id,
       ),
     });
+
+    // Confirmation SMS (opt-in only; no-op if Twilio not configured)
+    if (sms_opt_in === true) {
+      const smsBody = `You're booked! Canyon Apartments will call you ${slotLabel} MST. - Canyon Apts`;
+      const smsResult = await sendSMS(phone.trim(), smsBody);
+      if (smsResult.ok) {
+        try { await db.from('message_log').insert({ lead_id: lead.id, booking_id: booking.id, type: 'confirmation', channel: 'sms' }); } catch { /* non-critical */ }
+      }
+    }
 
     // Log emails (don't fail booking if email fails)
     const logRows = [];

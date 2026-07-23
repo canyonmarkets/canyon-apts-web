@@ -48,7 +48,7 @@ export default function CorporateHousingPage() {
               'Month-to-month terms — no 12-month commitment',
               'Fully furnished — employee arrives to a move-in ready home',
               'All utilities included — predictable single monthly cost',
-              'Locations across Phoenix, Scottsdale, Tempe, Chandler, Mesa, and Gilbert',
+              'Locations across Phoenix, Tempe, Chandler, Mesa, and Gilbert',
               'Fast setup — often available within 48 hours of request',
               'No credit check required for employee placement',
               'Flexible early termination — no penalties if the project ends early',
@@ -72,7 +72,7 @@ export default function CorporateHousingPage() {
             {[
               { title: 'Employee Relocation', body: 'Your company is relocating an employee to Phoenix. They need a furnished apartment immediately while house-hunting.' },
               { title: 'Project-Based Assignment', body: 'A team member is on a 60 to 90 day project in the Phoenix market. Hotel costs add up fast — a furnished apartment is smarter.' },
-              { title: 'Executive Extended Stay', body: 'Senior leadership needs furnished housing in Scottsdale or North Phoenix for a quarter or longer.' },
+              { title: 'Executive Extended Stay', body: 'Senior leadership needs furnished housing in North Phoenix or the East Valley for a quarter or longer.' },
               { title: 'Training or Onboarding', body: 'New hires coming through Phoenix for an extended onboarding program need comfortable, professional housing.' },
               { title: 'Consultant Placements', body: 'Consultants on multi-month engagements need a real apartment, not a hotel.' },
               { title: 'Insurance Housing', body: 'An employee\'s home is being repaired and they need furnished corporate-style housing covered by insurance.' },

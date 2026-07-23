@@ -53,14 +53,15 @@ export default function Hero() {
         <source src="/HeroVideo.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark overlay + brand vignette */}
-      <div className="absolute inset-0 bg-iron-900/70" aria-hidden="true" />
-      <div className="absolute inset-0 bg-gradient-to-tr from-brand-900/30 via-transparent to-transparent" aria-hidden="true" />
+      {/* Directional overlay: heavy behind the text column, light on the right so the video breathes */}
+      <div className="absolute inset-0 bg-gradient-to-r from-iron-900/95 via-iron-900/65 to-iron-900/20" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-b from-iron-900/60 via-transparent to-iron-900/70" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-brand-900/25 via-transparent to-transparent" aria-hidden="true" />
 
       <div ref={contentRef} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-24 w-full">
         <div className="max-w-3xl">
 
-          <p className="hero-rise text-brand-500 font-mono text-xs sm:text-base tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-6" style={{ animationDelay: '0.1s' }}>
+          <p className="hero-rise text-brand-200 font-mono text-xs sm:text-base tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-6 [text-shadow:0_1px_12px_rgba(0,0,0,0.6)]" style={{ animationDelay: '0.1s' }}>
             Phoenix Metro Area · Starting at $495 / Week
           </p>
 
@@ -72,8 +73,8 @@ export default function Hero() {
 
           <p className="hero-rise text-white text-sm sm:text-xl leading-relaxed max-w-2xl mb-4" style={{ animationDelay: '0.4s' }}>
             Fully furnished weekly and monthly rentals across the Phoenix metro.
-            Utilities included. Move-in ready. No credit checks, no rental history,
-            no long-term commitment.
+            Utilities included. No credit checks, no rental history, no long-term
+            commitment. <span className="font-semibold text-brand-200">Move in as soon as this week.</span>
           </p>
 
           <p className="hero-rise text-iron-300 text-sm sm:text-base leading-relaxed max-w-xl mb-10" style={{ animationDelay: '0.5s' }}>
@@ -83,12 +84,20 @@ export default function Hero() {
           <div className="hero-rise flex flex-col sm:flex-row gap-4" style={{ animationDelay: '0.6s' }}>
             <BookCallButton
               label="Book a Free 15-Min Call"
-              className="btn-pulse btn-shine inline-flex items-center justify-center rounded-lg bg-brand-500 px-8 py-4 text-base font-semibold text-white uppercase tracking-wide hover:bg-brand-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/40 active:scale-[0.97] active:translate-y-0 transition-all duration-200"
+              className="btn-pulse shimmer-sweep relative overflow-hidden inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-8 py-4 text-base font-semibold text-white uppercase tracking-wide shadow-[0_8px_28px_rgba(201,75,12,0.35)] hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(201,75,12,0.55)] active:scale-[0.97] active:translate-y-0 transition-all duration-200"
             />
-            <a href={SITE.inventoryUrl} target="_blank" rel="noopener noreferrer"
-              className="btn-shine inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-8 py-4 text-base font-semibold text-white uppercase tracking-wide hover:border-brand-500/60 hover:bg-white/5 hover:-translate-y-1 hover:shadow-lg active:scale-[0.97] active:translate-y-0 transition-all duration-200">
+            <a href={SITE.availabilityPath}
+              className="btn-shine inline-flex items-center justify-center rounded-xl border-2 border-white/30 bg-white/5 backdrop-blur-sm px-8 py-4 text-base font-semibold text-white uppercase tracking-wide hover:border-brand-400/70 hover:bg-white/10 hover:-translate-y-1 hover:shadow-lg active:scale-[0.97] active:translate-y-0 transition-all duration-200">
               View Inventory & Rates
             </a>
+          </div>
+
+          <div className="hero-rise mt-8 flex flex-wrap gap-2" style={{ animationDelay: '0.75s' }}>
+            {[['4,000+', 'guests hosted'], ['Since 2017', ''], ['No credit check', ''], ['Keys this week', '']].map(([b, rest]) => (
+              <span key={b} className="rounded-full bg-white/5 backdrop-blur-md border border-white/15 px-4 py-1.5 text-[12px] font-semibold text-white">
+                <b className="text-brand-200">{b}</b>{rest ? ` ${rest}` : ''}
+              </span>
+            ))}
           </div>
 
         </div>

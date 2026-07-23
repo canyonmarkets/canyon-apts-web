@@ -22,11 +22,11 @@ export default function Footer() {
       {/* Top accent glow */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-500/60 to-transparent" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-        <Reveal className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 pb-10 border-b border-stone-700">
+        <Reveal className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-8 pb-10 border-b border-stone-700">
 
           {/* Brand */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-1 flex flex-col gap-4">
-            <span className="font-display font-bold text-2xl tracking-widest uppercase text-gradient-animate">
+          <div className="col-span-2 md:col-span-4 lg:col-span-3 flex flex-col gap-4">
+            <span className="font-display font-bold text-xl tracking-normal uppercase text-gradient-animate">
               Canyon Apartments
             </span>
             <p className="text-xs leading-relaxed text-stone-400 max-w-xs">
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
 
           {/* Housing Types */}
-          <div>
+          <div className="lg:col-span-2">
             <p className="text-xs font-mono tracking-[0.2em] uppercase text-stone-500 mb-4">Housing Types</p>
             <ul className="flex flex-col gap-2.5">
               {HOUSING_TYPES.map((t) => (
@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
 
           {/* Cities */}
-          <div>
+          <div className="lg:col-span-2">
             <p className="text-xs font-mono tracking-[0.2em] uppercase text-stone-500 mb-4">Cities</p>
             <ul className="flex flex-col gap-2.5">
               {SPOKE_CITIES.map((c) => (
@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
 
           {/* Navigation */}
-          <div>
+          <div className="lg:col-span-2">
             <p className="text-xs font-mono tracking-[0.2em] uppercase text-stone-500 mb-4">Navigate</p>
             <ul className="flex flex-col gap-2.5">
               {NAV_LINKS.map(({ label, href }) => (
@@ -81,7 +81,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="lg:col-span-2">
             <p className="text-xs font-mono tracking-[0.2em] uppercase text-stone-500 mb-4">Quick Links</p>
             <ul className="flex flex-col gap-2.5">
               <li>
@@ -96,7 +96,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href={SITE.inventoryUrl} target="_blank" rel="noopener noreferrer"
+                <a href={SITE.availabilityPath}
                   className="nav-link inline-block text-sm text-stone-400 hover:text-brand-400 transition-colors duration-200">
                   View Inventory & Rates
                 </a>
@@ -105,7 +105,7 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="lg:col-span-1">
             <p className="text-xs font-mono tracking-[0.2em] uppercase text-stone-500 mb-4">Contact</p>
             <div className="flex flex-col gap-3">
               <span className="inline-flex items-center gap-2 text-sm text-stone-400">

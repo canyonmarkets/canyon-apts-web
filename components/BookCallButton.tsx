@@ -5,7 +5,11 @@ import { createPortal } from 'react-dom';
 import { X, CheckSquare, Square, ArrowRight } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 
-const CALENDLY = 'https://calendly.com/canyonaz/apartment-call?month=2026-05';
+// No `?month=` param: it pins the calendar to a fixed month. It was hardcoded to
+// 2026-05, which has zero available days now that month is in the past, so anyone
+// who got this far landed on an empty calendar and had to click forward to find a
+// slot. Without the param Calendly opens on the next month that has availability.
+const CALENDLY = 'https://calendly.com/canyonaz/apartment-call';
 
 const ITEMS = [
   {

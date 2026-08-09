@@ -31,7 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: BASE, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
-    { url: `${BASE}/available-now`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.95 },
     { url: `${BASE}/guides`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${BASE}/#amenities`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/#faq`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },

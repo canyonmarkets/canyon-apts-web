@@ -39,12 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-node_modules/
-.env
-.env.*
-*.log
-Thumbs.db
-.next/dev/cache/turbopack/ee6e79b1/00000287.sst
-.next/dev/cache/turbopack/ee6e79b1/00000337.sst
-.next/dev/cache/turbopack/ee6e79b1/00000439.sst
-.next/dev/cache/turbopack/ee6e79b1/00000440.sst

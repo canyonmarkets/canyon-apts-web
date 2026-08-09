@@ -10,11 +10,9 @@ export const SITE = {
   phoneHref: 'tel:+16232307020',
   email: 'properties@canyon-advisors.com',
   serviceArea: 'Phoenix Metro Area, AZ',
-  /** Google Doc — kept for internal/staff reference only. Do NOT link this publicly. */
-  inventoryDocUrl:
+  /** Live inventory + rates (Google Doc). Single source of truth for the "View Inventory" CTA. */
+  inventoryUrl:
     'https://docs.google.com/document/d/1WzosuTy5dRP1OoL5GROj5aP8jsY132h6Vmd9cVLiccw/edit?pli=1&tab=t.0',
-  /** Public live-inventory page (replaces the Google Doc for all public-facing CTAs). */
-  availabilityPath: '/available-now',
   foundedYear: 2017,
   startingWeeklyRate: 495,
 } as const;
@@ -23,7 +21,7 @@ export const SITE = {
 export const STATS = {
   guestsHosted: 4000, // conservative; ~4–5k bookings since 2017
   yearsInBusiness: new Date().getFullYear() - SITE.foundedYear,
-  citiesServed: 5, // Phoenix, Tempe, Mesa, Gilbert, Chandler
+  citiesServed: 5, // available now (Scottsdale coming soon)
 } as const;
 
 /**

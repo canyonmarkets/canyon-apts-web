@@ -20,6 +20,7 @@ const jsonLd = moneyPageJsonLd({
 
 const HOSPITALS = [
   'Banner University Medical Center Phoenix',
+  'HonorHealth Scottsdale',
   'Dignity Health St. Joseph\'s Hospital',
   'Valleywise Health Medical Center',
   'Mayo Clinic Hospital Phoenix',

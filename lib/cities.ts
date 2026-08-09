@@ -63,11 +63,15 @@ export const CITIES: City[] = [
       'Close to Intel, PayPal, and the Price Road Corridor — ideal for corporate and tech assignment workers, with easy Loop 101 and 202 access.',
     anchors: ['Intel', 'PayPal', 'Price Road Corridor', 'Loop 101', 'Loop 202'],
   },
-  // Scottsdale intentionally removed 2026-07-04 (Joleen's request): the "coming soon"
-  // presence was attracting Scottsdale-specific callers we can't serve yet and burning
-  // booking slots. Re-add the entry here when a Scottsdale unit is actually secured —
-  // the spoke pages, city hub, sitemap entries, and booking dropdown all regenerate
-  // from this list automatically.
+  {
+    slug: 'scottsdale',
+    name: 'Scottsdale',
+    available: false,
+    comingSoon: true,
+    blurb:
+      'Furnished units in Scottsdale are coming soon. Close to HonorHealth medical centers and the North Valley business district — ask about upcoming availability.',
+    anchors: ['HonorHealth Scottsdale', 'Loop 101', 'North Scottsdale'],
+  },
 ];
 
 /** Cities that get generated spoke pages (everything except the Phoenix hub). */

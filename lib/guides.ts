@@ -256,14 +256,14 @@ export const GUIDES: Guide[] = [
       {
         heading: 'Why you should not sign a long lease before you know Phoenix',
         paragraphs: [
-          'Phoenix is geographically enormous — about 517 square miles — and the metro spreads far beyond the city limits into Tempe, Mesa, Gilbert, Chandler, and beyond. A commute that looks manageable on Google Maps at noon can be a 45-minute slog during the I-10 rush hour. Neighborhoods vary dramatically in character within just a few miles.',
+          'Phoenix is geographically enormous — about 517 square miles — and the metro spreads far beyond the city limits into Tempe, Mesa, Gilbert, Chandler, Scottsdale, and beyond. A commute that looks manageable on Google Maps at noon can be a 45-minute slog during the I-10 rush hour. Neighborhoods vary dramatically in character within just a few miles.',
           'Signing a 12-month lease before you have spent time in the city — and before you know where your employer\'s office actually is relative to where you want to live — is a common mistake among new Phoenix residents. The smart move is a flexible furnished rental for 30–90 days while you explore, then sign a long-term lease from a position of actual local knowledge.',
         ],
       },
       {
         heading: 'The East Valley vs. the West Valley — a quick orientation',
         paragraphs: [
-          'The Phoenix metro splits roughly into the East Valley (Tempe, Mesa, Gilbert, Chandler) and the West Valley (Glendale, Peoria, Surprise, Avondale, Goodyear). The two halves rarely mix day-to-day — the drive between them can be 45–60 minutes in traffic. Figure out which side of the metro your employer is on before choosing where to land.',
+          'The Phoenix metro splits roughly into the East Valley (Tempe, Mesa, Gilbert, Chandler, Scottsdale) and the West Valley (Glendale, Peoria, Surprise, Avondale, Goodyear). The two halves rarely mix day-to-day — the drive between them can be 45–60 minutes in traffic. Figure out which side of the metro your employer is on before choosing where to land.',
           'The East Valley is generally denser, younger, and closer to the major tech and healthcare employers. The West Valley has newer housing stock and lower prices, but more sprawl. Downtown Phoenix is the geographic center but not the employment center for most industries.',
         ],
       },

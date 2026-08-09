@@ -1,6 +1,7 @@
 import BookCallButton from '@/components/BookCallButton';
 import Reveal from '@/components/Reveal';
-import { SITE } from '@/lib/site';
+
+const INVENTORY = 'https://docs.google.com/document/d/1WzosuTy5dRP1OoL5GROj5aP8jsY132h6Vmd9cVLiccw/edit?pli=1&tab=t.0';
 
 const STEPS = [
   {
@@ -47,10 +48,10 @@ export default function HowItWorks() {
           <div className="mt-8 h-px bg-gradient-to-r from-transparent via-brand-500/50 to-transparent" />
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
           {STEPS.map(({ step, title, body }, i) => (
             <Reveal key={step} delay={i * 110}>
-              <div className="group h-full rounded-2xl bg-white/[0.04] ring-1 ring-white/10 p-10 flex flex-col gap-6 transition-all duration-300 hover:ring-brand-500/40 hover:bg-white/[0.07] hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(201,75,12,0.15)]">
+              <div className="group h-full bg-iron-800 p-10 flex flex-col gap-6 hover:bg-iron-700 transition-colors duration-300">
                 <span className="font-mono text-7xl font-bold leading-none text-brand-500/20 select-none transition-all duration-300 group-hover:text-brand-500/70 group-hover:-translate-y-1">
                   {step}
                 </span>
@@ -66,13 +67,13 @@ export default function HowItWorks() {
         </div>
 
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href={SITE.availabilityPath}
+          <a href={INVENTORY} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 px-8 py-3.5 text-sm font-semibold text-white uppercase tracking-wide hover:border-brand-500/60 hover:bg-white/5 hover:-translate-y-1 hover:shadow-lg active:scale-[0.97] transition-all duration-200">
             View Inventory & Rates
           </a>
           <BookCallButton
             label="Book a Free 15-Min Call"
-            className="shimmer-sweep relative overflow-hidden inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-8 py-3.5 text-sm font-semibold text-white uppercase tracking-wide shadow-[0_6px_24px_rgba(201,75,12,0.3)] hover:-translate-y-1 hover:shadow-[0_10px_32px_rgba(201,75,12,0.5)] active:scale-[0.97] transition-all duration-200"
+            className="btn-shine inline-flex items-center justify-center rounded-lg bg-brand-500 px-8 py-3.5 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/40 active:scale-[0.97] transition-all duration-200"
           />
         </div>
 

@@ -7,7 +7,7 @@ import { trackEvent } from '@/lib/analytics';
 /**
  * Standard hero call-to-action pair used across all landing pages, matching the
  * homepage Hero:
- *   1. "Book a Free 15-Min Call" — navigates to /book (in-house booking flow).
+ *   1. "Book a Free 15-Min Call" — opens the pre-screening quiz → Calendly.
  *   2. "View Inventory & Rates"  — opens the live Google Doc inventory list.
  *
  * Styled for the dark (stone-900) hero background. Pass `callLabel` to override
@@ -25,7 +25,9 @@ export default function HeroCTAButtons({
         className="btn-shine inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:bg-brand-700 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/40"
       />
       <a
-        href={SITE.availabilityPath}
+        href={SITE.inventoryUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         onClick={() => trackEvent('view_inventory', { lead_source: 'hero_inventory_button' })}
         className="btn-shine inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/30 px-8 py-4 text-sm font-semibold text-white uppercase tracking-wide hover:border-brand-500/60 hover:bg-white/5 hover:-translate-y-0.5 transition-all duration-200"
       >

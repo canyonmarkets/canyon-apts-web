@@ -29,7 +29,10 @@ export const HOSPITALS: Hospital[] = [
   { name: 'Chandler Regional Medical Center', city: 'chandler' },
   // Tempe
   { name: 'Tempe St. Luke\'s Hospital', city: 'tempe' },
-  // (Scottsdale hospitals removed with the city on 2026-07-04 — restore when Scottsdale returns.)
+  // Scottsdale
+  { name: 'HonorHealth Scottsdale Osborn Medical Center', city: 'scottsdale' },
+  { name: 'HonorHealth Scottsdale Shea Medical Center', city: 'scottsdale' },
+  { name: 'Mayo Clinic Hospital (Phoenix/Scottsdale area)', city: 'scottsdale' },
 ];
 
 export const hospitalsForCity = (citySlug: string) =>

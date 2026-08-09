@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { X, ChevronLeft, ArrowRight, Clock, Calendar } from 'lucide-react';
 import { SCREENING_ITEMS, type LeadSource } from '@/lib/booking';
@@ -95,7 +96,22 @@ function GatingModal({
   onWaitlist: (reason: string) => void;
   onClose: () => void;
 }) {
-  if (!type) return null;
+  // Portal to <body>. Rendering a `fixed` overlay inline is unsafe: any ancestor
+  // with a transform / filter / will-change (e.g. our .hero-rise and .reveal
+  // animation classes) becomes the containing block, so `inset-0` resolves to
+  // that ancestor's box instead of the viewport and the panel hangs off-screen.
+  // Lock background scroll while the modal is up so touch drags move the panel,
+  // not the page behind it.
+  useEffect(() => {
+    if (!type) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, [type]);
+
+  // `type` is null on the server and on first paint, so the portal only ever
+  // runs client-side — no hydration mismatch.
+  if (!type || typeof document === 'undefined') return null;
   const cityName = CITIES.find(c => c.slug === city)?.name ?? city;
 
   const content = {
@@ -119,14 +135,17 @@ function GatingModal({
     },
   }[type];
 
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
-      <div className="absolute inset-0 bg-black/75 backdrop-blur-sm" />
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto overscroll-contain p-4 sm:items-center"
+      onClick={onClose}
+    >
+      <div className="fixed inset-0 bg-black/75 backdrop-blur-sm" />
       <div
-        className="relative z-10 w-full max-w-md rounded-2xl bg-[#1b2436] ring-1 ring-white/10 shadow-2xl step-rise"
+        className="relative z-10 my-auto flex max-h-[calc(100dvh-2rem)] w-full max-w-md flex-col overflow-hidden rounded-2xl bg-[#1b2436] ring-1 ring-white/10 shadow-2xl step-rise"
         onClick={e => e.stopPropagation()}
       >
-        <div className="bg-gradient-to-r from-brand-700 to-brand-500 rounded-t-2xl px-6 py-4 flex items-start justify-between gap-4">
+        <div className="shrink-0 bg-gradient-to-r from-brand-700 to-brand-500 rounded-t-2xl px-6 py-4 flex items-start justify-between gap-4">
           <h3 className="font-display font-bold text-lg uppercase tracking-wide text-white leading-tight">
             {content.title}
           </h3>
@@ -134,7 +153,7 @@ function GatingModal({
             <X size={18} />
           </button>
         </div>
-        <div className="px-6 py-5">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-5">
           <p className="text-white/65 text-sm leading-relaxed mb-5">{content.body}</p>
           <div className="flex flex-col gap-3">
             <button
@@ -152,7 +171,8 @@ function GatingModal({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
